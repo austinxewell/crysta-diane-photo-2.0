@@ -1,7 +1,11 @@
 <template>
-    <div>Services Page</div>
+  <div>Services Page</div>
 </template>
 
-<script setup></script>
+<script setup>
+useHead({
+  title: 'Services'
+});
+</script>
 
 <style scoped></style>

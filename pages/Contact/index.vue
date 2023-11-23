@@ -1,7 +1,11 @@
 <template>
-    <div>Contact Page</div>
+  <div>Contact Page</div>
 </template>
 
-<script setup></script>
+<script setup>
+useHead({
+  title: 'Contact'
+});
+</script>
 
 <style scoped></style>
