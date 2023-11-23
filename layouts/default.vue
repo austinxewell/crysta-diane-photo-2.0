@@ -1,5 +1,5 @@
 <template>
-  <div class="app-wrapper">
+  <div class="layout-wrapper">
     <TheSidebar />
     <div>
       <TheHeader />
@@ -11,8 +11,10 @@
 
 <script setup></script>
 
-<style scoped>
-.app-wrapper {
+<style lang="scss">
+html .layout-wrapper {
+  height: 100%;
   display: flex;
+  overflow: hidden;
 }
 </style>

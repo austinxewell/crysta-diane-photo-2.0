@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="app-wrapper">
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
@@ -24,3 +24,9 @@ useHead({
   ]
 });
 </script>
+
+<style lang="scss" scoped>
+.app-wrapper {
+  height: 100%;
+}
+</style>
