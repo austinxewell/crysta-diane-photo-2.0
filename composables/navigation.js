@@ -34,7 +34,7 @@ export const useNavigationItems = () =>
           id: 2,
           name: 'Maternity',
           shortName: 'Maternity',
-          icon: 'pregnancy',
+          icon: 'pregnant_woman',
           link: '/services/maternity'
         },
         {
@@ -85,3 +85,5 @@ export const useNavigationItems = () =>
   ]);
 
 export const useNavigationToggle = () => useState('expanded-toggle', () => true);
+
+export const useParentToggle = () => useState('parent-toggle', () => '');
