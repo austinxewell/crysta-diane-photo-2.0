@@ -12,7 +12,9 @@
 <style scoped>
 .nav-wrapper {
   display: flex;
+  flex-direction: column;
   gap: 10px;
+  background-color: aqua;
 }
 .nav-wrapper:hover {
   cursor: pointer;
