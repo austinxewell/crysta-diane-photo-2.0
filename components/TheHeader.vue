@@ -1,8 +1,6 @@
 <template>
   <div>
-    <p class="my-4">Hello World This is Index</p>
-    <br />
-    <br />
+    <p>This Will Be The Header</p>
   </div>
 </template>
 

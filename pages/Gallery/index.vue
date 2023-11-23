@@ -2,6 +2,10 @@
   <div>Gallery Page</div>
 </template>
 
-<script setup></script>
+<script setup>
+useHead({
+  title: 'Gallery'
+});
+</script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>
