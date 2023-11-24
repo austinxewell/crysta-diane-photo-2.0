@@ -1,5 +1,8 @@
 <template>
-  <div>School Dance Page</div>
+  <div>
+    page should be:
+    <h1>{{ $route.params.name }}</h1>
+  </div>
 </template>
 
 <script setup></script>
