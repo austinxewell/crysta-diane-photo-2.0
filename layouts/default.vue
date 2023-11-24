@@ -12,9 +12,13 @@
 <script setup></script>
 
 <style lang="scss">
-html .layout-wrapper {
+.layout-wrapper {
   height: 100%;
   display: flex;
   overflow: hidden;
+}
+
+.minimized-footer-content {
+  width: calc(100% - 42px);
 }
 </style>
