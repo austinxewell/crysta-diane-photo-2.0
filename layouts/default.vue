@@ -1,8 +1,7 @@
 <template>
   <div class="layout-wrapper">
     <TheSidebar />
-    <div>
-      <TheHeader />
+    <div class="app-view-content">
       <slot></slot>
       <TheFooter />
     </div>
@@ -18,7 +17,8 @@
   overflow: hidden;
 }
 
-.minimized-footer-content {
-  width: calc(100% - 42px);
+.app-view-content {
+  width: 100%;
+  overflow: auto;
 }
 </style>

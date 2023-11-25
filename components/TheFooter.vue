@@ -1,6 +1,6 @@
 <template>
   <div>
-    <footer class="footer-wrapper" :class="{ minimized: !isExpanded }">
+    <footer class="footer-wrapper">
       <div class="content-wrapper">
         <section class="social-links-wrapper">
           <h3>Contact:</h3>
@@ -30,21 +30,12 @@
   </div>
 </template>
 
-<script setup>
-const isExpanded = useNavigationToggle();
-</script>
+<script setup></script>
 
 <style lang="scss" scoped>
 .footer-wrapper {
-  width: calc(100% - 300px);
   background-color: $black-main;
-  position: absolute;
-  bottom: 0;
   overflow: hidden;
-}
-
-.minimized {
-  width: calc(100% - 42px);
 }
 
 .content-wrapper {
