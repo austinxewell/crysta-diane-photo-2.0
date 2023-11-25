@@ -64,13 +64,6 @@ export const useNavigationItems = () =>
           shortName: 'Seniors',
           icon: 'school',
           link: '/services/seniors'
-        },
-        {
-          id: 7,
-          name: 'School Dance',
-          shortName: 'Dance',
-          icon: 'music_note',
-          link: '/services/schooldance'
         }
       ]
     },
