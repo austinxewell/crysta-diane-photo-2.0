@@ -20,5 +20,6 @@
 .app-view-content {
   width: 100%;
   overflow: auto;
+  background-color: $gray-light;
 }
 </style>

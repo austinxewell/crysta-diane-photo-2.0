@@ -31,9 +31,10 @@ const dummyData = ref([
 <style lang="scss" scoped>
 .carousel-wrapper {
   width: 100%;
+  background-color: $gray-light;
 }
 img {
   width: 100%;
-  height: 35vh;
+  height: 40vh;
 }
 </style>
