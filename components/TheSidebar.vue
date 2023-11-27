@@ -1,7 +1,7 @@
 <template>
   <div class="sidebar-wrapper">
-    <SidebarDesktopExpanded v-if="isExpanded" class="sidebar-wrapper" />
-    <SidebarDesktopCollapsed v-else class="sidebar-wrapper" />
+    <NavigationSidebarExpanded v-if="isExpanded" class="sidebar-wrapper" />
+    <NavigationSidebarCollapsed v-else class="sidebar-wrapper" />
   </div>
 </template>
 

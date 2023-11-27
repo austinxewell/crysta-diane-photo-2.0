@@ -5,9 +5,10 @@
         <CommonMainLogo />
         <span class="material-icons-outlined expanded-icon" @click="toggleExpanded"> menu_open </span>
       </section>
+      <h2>&bull; Admin Links &bull;</h2>
       <ul class="nav-link-wrapper">
         <li v-for="navLink in menuItems" :key="navLink.id">
-          <NuxtLink :to="navLink.link" class="nav-link">
+          <NuxtLink :to="`/admin${navLink.link}`" class="nav-link">
             <i class="material-icons-outlined nav-icon">{{ navLink.icon }}</i>
             {{ navLink.name }}
             <div v-if="navLink.children.length > 0">
@@ -25,7 +26,7 @@
           <div v-if="parentToggle === navLink.name">
             <ul class="nav-link-wrapper child-nav-link-wrapper">
               <li v-for="navLinkChild in navLink.children" :key="navLinkChild.id">
-                <NuxtLink :to="navLinkChild.link" class="nav-link child-nav-link">
+                <NuxtLink :to="`/admin${navLinkChild.link}`" class="nav-link child-nav-link">
                   <i class="material-icons-outlined nav-icon child-nav-icon">{{ navLinkChild.icon }}</i>
                   {{ navLinkChild.name }}
                 </NuxtLink>
@@ -34,6 +35,7 @@
           </div>
         </li>
       </ul>
+      <p>Logout</p>
     </nav>
   </div>
 </template>
@@ -64,6 +66,7 @@ function toggleExpanded() {
   background-color: $primary;
   width: 300px;
   height: 100%;
+  overflow: auto;
 }
 .nav-header {
   margin: 16px 8px 16px 8px;
