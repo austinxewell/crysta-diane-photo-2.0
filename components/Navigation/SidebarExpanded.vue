@@ -1,11 +1,11 @@
 <template>
-  <div>
-    <nav class="nav-wrapper">
+  <nav class="nav-wrapper">
+    <div class="upper-nav-content">
       <section class="nav-header">
         <CommonMainLogo />
         <span class="material-icons-outlined expanded-icon" @click="toggleExpanded"> menu_open </span>
       </section>
-      <h2>&bull; Admin Links &bull;</h2>
+      <h2>&bull; Admin View &bull;</h2>
       <ul class="nav-link-wrapper">
         <li v-for="navLink in menuItems" :key="navLink.id">
           <NuxtLink :to="`/admin${navLink.link}`" class="nav-link">
@@ -35,15 +35,21 @@
           </div>
         </li>
       </ul>
-      <p>Logout</p>
-    </nav>
-  </div>
+    </div>
+    <p class="logout-btn" @click="logout"><span class="material-icons-outlined nav-icon"> logout </span>Logout</p>
+  </nav>
 </template>
 
 <script setup>
 const menuItems = useNavigationItems();
 const isExpanded = useNavigationToggle();
 const parentToggle = useParentToggle();
+const isLoggedIn = useIsLoggedIn();
+
+function logout() {
+  isLoggedIn.value = false;
+  return navigateTo({ path: '/' });
+}
 
 function handleParentToggle(btnName) {
   if (parentToggle.value === btnName) {
@@ -68,6 +74,10 @@ function toggleExpanded() {
   height: 100%;
   overflow: auto;
 }
+
+.upper-nav-content {
+  height: calc(100% - 32px);
+}
 .nav-header {
   margin: 16px 8px 16px 8px;
   display: flex;
@@ -78,6 +88,10 @@ function toggleExpanded() {
 }
 .expanded-icon:hover {
   cursor: pointer;
+}
+
+h2 {
+  padding-left: 40px;
 }
 .nav-link-wrapper {
   margin-top: 20px;
@@ -119,5 +133,16 @@ function toggleExpanded() {
   bottom: 8px;
   right: 8px;
   font-size: 32px;
+}
+
+.logout-btn {
+  display: flex;
+  width: 24px;
+  font-size: 24px;
+  padding-bottom: 8px;
+}
+
+.logout-btn:hover {
+  cursor: pointer;
 }
 </style>

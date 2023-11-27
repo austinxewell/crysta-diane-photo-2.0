@@ -3,7 +3,7 @@
     <span class="material-icons-outlined expanded-icon" @click="toggleExpanded"> menu </span>
     <ul class="nav-link-wrapper">
       <li v-for="navLink in menuItems" :key="navLink.id">
-        <NuxtLink :to="navLink.link">
+        <NuxtLink :to="`/admin${navLink.link}`">
           <span class="material-icons-outlined nav-icon">{{ navLink.icon }}</span>
         </NuxtLink>
         <div v-if="navLink.children.length > 0" class="expanded-wrapper">
@@ -20,7 +20,7 @@
         <div v-if="parentToggle === navLink.name">
           <ul class="child-nav-link-wrapper">
             <li v-for="navLinkChild in navLink.children" :key="navLinkChild.id">
-              <NuxtLink :to="navLinkChild.link">
+              <NuxtLink :to="`/admin${navLinkChild.link}`">
                 <span class="material-icons-outlined nav-icon">{{ navLinkChild.icon }}</span>
               </NuxtLink>
             </li>
