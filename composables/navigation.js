@@ -81,4 +81,4 @@ export const useNavigationToggle = () => useState('expanded-toggle', () => true)
 
 export const useParentToggle = () => useState('parent-toggle', () => '');
 
-export const useAdminParentToggle = () => useState('parent-toggle', () => '');
+export const useAdminParentToggle = () => useState('admin-parent-toggle', () => '');

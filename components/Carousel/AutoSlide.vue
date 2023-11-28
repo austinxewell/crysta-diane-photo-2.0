@@ -2,7 +2,7 @@
   <div class="carousel-wrapper">
     <carousel :autoplay="6000" :wrap-around="true">
       <slide v-for="slide in dummyData" :key="slide">
-        <img :src="slide.src" alt="" />
+        <img :src="slide.src" :alt="slide.photoName" />
       </slide>
       <template #addons>
         <pagination />

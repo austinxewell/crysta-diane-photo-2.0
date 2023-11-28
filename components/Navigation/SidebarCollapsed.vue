@@ -8,16 +8,16 @@
         </NuxtLink>
         <div v-if="navLink.children.length > 0" class="expanded-wrapper">
           <i
-            v-if="parentToggle === navLink.name"
-            @click="handleParentToggle(navLink.name)"
+            v-if="adminParentToggle === navLink.name"
+            @click="handleAdminParentToggle(navLink.name)"
             class="material-icons-outlined parent-icon"
             >expand_less</i
           >
-          <i v-else @click="handleParentToggle(navLink.name)" class="material-icons-outlined parent-icon"
+          <i v-else @click="handleAdminParentToggle(navLink.name)" class="material-icons-outlined parent-icon"
             >expand_more</i
           >
         </div>
-        <div v-if="parentToggle === navLink.name">
+        <div v-if="adminParentToggle === navLink.name">
           <ul class="child-nav-link-wrapper">
             <li v-for="navLinkChild in navLink.children" :key="navLinkChild.id">
               <NuxtLink class="btn" :to="`/admin${navLinkChild.link}`" :data-tooltip="navLinkChild.name">
@@ -37,7 +37,7 @@
 <script setup>
 const menuItems = useNavigationItems();
 const isExpanded = useNavigationToggle();
-const parentToggle = useParentToggle();
+const adminParentToggle = useAdminParentToggle();
 const isLoggedIn = useIsLoggedIn();
 
 function logout() {
@@ -45,11 +45,11 @@ function logout() {
   return navigateTo({ path: '/' });
 }
 
-function handleParentToggle(btnName) {
-  if (parentToggle.value === btnName) {
-    parentToggle.value = '';
+function handleAdminParentToggle(btnName) {
+  if (adminParentToggle.value === btnName) {
+    adminParentToggle.value = '';
   } else {
-    parentToggle.value = btnName;
+    adminParentToggle.value = btnName;
   }
 }
 
