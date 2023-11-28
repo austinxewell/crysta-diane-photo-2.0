@@ -1,41 +1,39 @@
 <template>
   <nav class="nav-wrapper">
-    <div class="upper-nav-content">
-      <section class="nav-header">
-        <CommonMainLogo />
-        <span class="material-icons-outlined expanded-icon" @click="toggleExpanded"> menu_open </span>
-      </section>
-      <h2>&bull; Admin View &bull;</h2>
-      <ul class="nav-link-wrapper">
-        <li v-for="navLink in menuItems" :key="navLink.id">
-          <NuxtLink :to="`/admin${navLink.link}`" class="nav-link">
-            <i class="material-icons-outlined nav-icon">{{ navLink.icon }}</i>
-            {{ navLink.name }}
-            <div v-if="navLink.children.length > 0">
-              <i
-                v-if="parentToggle === navLink.name"
-                @click="handleParentToggle(navLink.name)"
-                class="material-icons-outlined parent-icon"
-                >expand_less</i
-              >
-              <i v-else @click="handleParentToggle(navLink.name)" class="material-icons-outlined parent-icon"
-                >expand_more</i
-              >
-            </div>
-          </NuxtLink>
-          <div v-if="parentToggle === navLink.name">
-            <ul class="nav-link-wrapper child-nav-link-wrapper">
-              <li v-for="navLinkChild in navLink.children" :key="navLinkChild.id">
-                <NuxtLink :to="`/admin${navLinkChild.link}`" class="nav-link child-nav-link">
-                  <i class="material-icons-outlined nav-icon child-nav-icon">{{ navLinkChild.icon }}</i>
-                  {{ navLinkChild.name }}
-                </NuxtLink>
-              </li>
-            </ul>
+    <section class="nav-header">
+      <CommonMainLogo />
+      <span class="material-icons-outlined expanded-icon" @click="toggleExpanded"> menu_open </span>
+    </section>
+    <h2>&bull; Admin View &bull;</h2>
+    <ul class="nav-link-wrapper">
+      <li v-for="navLink in menuItems" :key="navLink.id">
+        <NuxtLink :to="`/admin${navLink.link}`" class="nav-link">
+          <i class="material-icons-outlined nav-icon">{{ navLink.icon }}</i>
+          {{ navLink.name }}
+          <div v-if="navLink.children.length > 0">
+            <i
+              v-if="parentToggle === navLink.name"
+              @click="handleParentToggle(navLink.name)"
+              class="material-icons-outlined parent-icon"
+              >expand_less</i
+            >
+            <i v-else @click="handleParentToggle(navLink.name)" class="material-icons-outlined parent-icon"
+              >expand_more</i
+            >
           </div>
-        </li>
-      </ul>
-    </div>
+        </NuxtLink>
+        <div v-if="parentToggle === navLink.name">
+          <ul class="nav-link-wrapper child-nav-link-wrapper">
+            <li v-for="navLinkChild in navLink.children" :key="navLinkChild.id">
+              <NuxtLink :to="`/admin${navLinkChild.link}`" class="nav-link child-nav-link">
+                <i class="material-icons-outlined nav-icon child-nav-icon">{{ navLinkChild.icon }}</i>
+                {{ navLinkChild.name }}
+              </NuxtLink>
+            </li>
+          </ul>
+        </div>
+      </li>
+    </ul>
     <p class="logout-btn" @click="logout"><span class="material-icons-outlined nav-icon"> logout </span>Logout</p>
   </nav>
 </template>
@@ -73,10 +71,6 @@ function toggleExpanded() {
   width: 300px;
   height: 100%;
   overflow: auto;
-}
-
-.upper-nav-content {
-  height: calc(100% - 32px);
 }
 .nav-header {
   margin: 16px 8px 16px 8px;
