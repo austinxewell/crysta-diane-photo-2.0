@@ -10,7 +10,6 @@
           </p>
         </div>
       </section>
-      <CommonReviewCard />
     </div>
     <img
       src="https://www.shutterstock.com/image-photo/portrait-isolated-cutout-studio-full-600nw-2247820669.jpg"

@@ -12,10 +12,6 @@ const props = defineProps({
   isWhite: {
     type: Boolean,
     required: false
-  },
-  isLarge: {
-    type: Boolean,
-    require: false
   }
 });
 </script>

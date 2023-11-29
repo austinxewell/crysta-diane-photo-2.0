@@ -1,5 +1,5 @@
 export const useNavigationItems = () =>
-  useState<object>('menu-items', () => [
+  useState('menu-items', () => [
     {
       id: 1,
       name: 'Home',
@@ -77,8 +77,8 @@ export const useNavigationItems = () =>
     }
   ]);
 
-export const useNavigationToggle = () => useState<boolean>('expanded-toggle', () => true);
+export const useNavigationToggle = () => useState('expanded-toggle', () => true);
 
-export const useParentToggle = () => useState<string>('parent-toggle', () => '');
+export const useParentToggle = () => useState('parent-toggle', () => '');
 
-export const useAdminParentToggle = () => useState<string>('parent-toggle', () => '');
+export const useAdminParentToggle = () => useState('admin-parent-toggle', () => '');

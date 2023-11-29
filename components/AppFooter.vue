@@ -23,6 +23,7 @@
           <ul>
             <li>&copy; crystadianephotography</li>
             <li>Created By: <a href="https://github.com/austinxewell" target="_blank">Austin Ewell</a></li>
+            <li><NuxtLink to="/login">Admin Login</NuxtLink></li>
           </ul>
         </section>
       </div>
