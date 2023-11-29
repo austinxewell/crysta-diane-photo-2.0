@@ -1,0 +1,43 @@
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  cursor: move;
+  background: transparent;
+
+  @media (max-width: $br-mobile) {
+    background: transparent;
+  }
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $primary-dark;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+html,
+body,
+#__nuxt,
+#__layout {
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 35px;
+}
+
+h2 {
+  font-size: 25px;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: 700;
+}
