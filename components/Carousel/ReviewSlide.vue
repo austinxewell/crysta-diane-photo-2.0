@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h3>&bull; Reviews &bull;</h3>
     <carousel :breakpoints="breakpoints" :wrap-around="true" :transition="600">
       <slide v-for="slide in dummyData" :key="slide">
         <div class="review-node-wrapper">
@@ -86,6 +85,9 @@ const breakpoints = {
   width: 70%;
   height: 250px;
 }
+.review-node-wrapper:hover {
+  cursor: grab;
+}
 
 .review-node-content {
   display: flex;
@@ -97,12 +99,6 @@ const breakpoints = {
   overflow: auto;
   border: solid 1px $black-light;
   box-shadow: 12px 12px 2px 1px rgba(78, 71, 47, 0.1);
-}
-
-h3 {
-  text-align: center;
-  font-size: 36px;
-  font-family: 'Nothing You Could Do', cursive;
 }
 
 .node-content-wrapper {
