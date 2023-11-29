@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="avi-wrapper">
     <img :src="profileData.fullAvi" alt="" />
   </div>
 </template>
@@ -9,8 +9,12 @@ const profileData = useProfileInfo();
 </script>
 
 <style lang="scss" scoped>
+.avi-wrapper {
+  position: relative;
+}
 img {
   border-radius: 50%;
-  height: 50vh;
+  width: 80%;
+  height: auto;
 }
 </style>
