@@ -1,7 +1,7 @@
 <template>
   <div class="nav-wrapper">
     <div v-for="navLink in menuItems" :key="navLink.id" class="link-wrapper">
-      <NuxtLink :to="navLink.link">{{ navLink.name }}</NuxtLink>
+      <NuxtLink class="link" :to="navLink.link">{{ navLink.name }}</NuxtLink>
       <div v-if="navLink.children.length > 0" class="expand-section-wrapper">
         <span
           v-if="parentToggle === navLink.name"
@@ -17,7 +17,7 @@
       <div v-if="parentToggle === navLink.name" class="dropdown-wrapper">
         <ul>
           <li v-for="childNavLink in navLink.children">
-            <NuxtLink :to="childNavLink.link">{{ childNavLink.name }}</NuxtLink>
+            <NuxtLink class="link" :to="childNavLink.link">{{ childNavLink.name }}</NuxtLink>
           </li>
         </ul>
       </div>
@@ -94,5 +94,9 @@ function handleParentToggle(btnName) {
 .dropdown-wrapper li {
   padding-right: 8px;
   padding-left: 8px;
+}
+
+.link:hover {
+  border-bottom: solid 2px $white-main;
 }
 </style>
