@@ -49,6 +49,9 @@ function handleParentToggle(btnName) {
   background: $black-main;
   padding: 16px 24px 24px 0;
   font-size: 18px;
+  position: fixed;
+  z-index: 1;
+  width: 100%;
 }
 
 .router-link-active {

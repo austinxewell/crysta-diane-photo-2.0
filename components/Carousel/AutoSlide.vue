@@ -1,6 +1,6 @@
 <template>
   <div class="carousel-wrapper">
-    <carousel :autoplay="6000" :wrap-around="true">
+    <carousel :autoplay="4000" :pauseAutoplayOnHover="true" :transition="700" :wrap-around="true">
       <slide v-for="slide in dummyData" :key="slide">
         <img :src="slide.src" :alt="slide.photoName" />
       </slide>
