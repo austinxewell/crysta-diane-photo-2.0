@@ -40,31 +40,31 @@ const dummyData = ref([
     rating: 4
   },
   {
-    id: 1,
+    id: 2,
     reviewedBy: 'Willow Mendez',
     review: 'I fart on my boyfriend',
     rating: 5
   },
   {
-    id: 1,
+    id: 3,
     reviewedBy: 'Myla',
     review: 'I play make believe with flowers that they are food... except i really eat them',
     rating: 5
   },
   {
-    id: 1,
+    id: 4,
     reviewedBy: 'Sailor',
     review: 'Ouch. caca. akka. sorry. pweese',
     rating: 1
   },
   {
-    id: 1,
+    id: 5,
     reviewedBy: 'Austin Sir-Mix-Alot',
     review: 'I like big butts and I can not lie',
     rating: 2
   },
   {
-    id: 1,
+    id: 6,
     reviewedBy: 'Willard',
     review: 'Is she a duck or a tree, we may never know.',
     rating: 3
