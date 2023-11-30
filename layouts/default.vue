@@ -1,15 +1,19 @@
 <template>
   <div v-if="!isAdmin">
     <NavigationHeaderNav />
-    <slot></slot>
-    <AppFooter />
+    <div class="page-content">
+      <slot></slot>
+      <AppFooter />
+    </div>
   </div>
   <div v-else class="layout-wrapper">
     <AppSidebar />
     <div class="app-view-content">
       <NavigationHeaderNav />
-      <slot></slot>
-      <AppFooter />
+      <div class="page-content">
+        <slot></slot>
+        <AppFooter />
+      </div>
     </div>
   </div>
 </template>
@@ -28,5 +32,9 @@ const isAdmin = useIsLoggedIn();
 .app-view-content {
   width: 100%;
   overflow: auto;
+}
+
+.page-content {
+  padding-top: 103px;
 }
 </style>
