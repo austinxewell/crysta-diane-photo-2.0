@@ -1,7 +1,7 @@
 <template>
   <div class="avi-wrapper">
     <section>
-      <NuxtLink class="gallery-btn" to="/gallery">Come See More Of My Work!</NuxtLink>
+      <NuxtLink class="gallery-btn" to="/gallery">Come See Some Of My Work!</NuxtLink>
       <div class="arrow-left"></div>
     </section>
     <img :src="profileData.fullAvi" alt="" />

@@ -6,6 +6,7 @@
       <AppFooter />
     </div>
   </div>
+
   <div v-else class="layout-wrapper">
     <AppSidebar />
     <div class="app-view-content">
