@@ -6,15 +6,14 @@
         <div class="left-side">
           <UserIntroCard />
           <section class="review-pre-text">
-            <h4>Reviews are so Important to me!</h4>
-            <p>Please take a second to read or leave me a review!</p>
+            <h4>{{ profileData.reviewHeader }}</h4>
+            <p>{{ profileData.reviewText }}</p>
             <button>&bull; Leave a Review &bull;</button>
           </section>
         </div>
         <div class="divider"></div>
         <div class="right-side">
           <CommonFullAvi />
-          <NuxtLink to="/gallery">Check out some of my work!</NuxtLink>
         </div>
       </div>
       <UserReviewCard class="review-card-content" />
@@ -22,7 +21,9 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+const profileData = useProfileInfo();
+</script>
 
 <style lang="scss" scoped>
 .dashboard-content {
@@ -48,11 +49,14 @@
   padding-bottom: 16px;
   padding-right: 32px;
   width: 50%;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .right-side {
   padding-left: 32px;
+  position: relative;
 }
 
 .divider {
@@ -63,16 +67,23 @@
 }
 
 .review-pre-text {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  bottom: 16px;
-  right: 32px;
+  padding-top: 40px;
+  text-align: end;
+  width: 80%;
+  margin-left: auto;
 }
 
 .review-pre-text h4 {
-  text-align: center;
+  padding-right: 32px;
   font-size: 24px;
   font-weight: 800;
+}
+.review-pre-text button {
+  padding-top: 16px;
+  margin-right: 25%;
+}
+
+.review-pre-text button:hover {
+  border-bottom: solid 1px $black-main;
 }
 </style>
