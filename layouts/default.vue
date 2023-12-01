@@ -31,11 +31,13 @@ const isAdmin = useIsLoggedIn();
 }
 
 .app-view-content {
-  width: 100%;
-  overflow: auto;
+  display: flex;
+  flex: 1 1 0;
 }
 
 .page-content {
+  width: 100%;
   padding-top: 103px;
+  overflow: auto;
 }
 </style>
