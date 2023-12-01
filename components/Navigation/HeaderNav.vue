@@ -1,5 +1,11 @@
 <template>
-  <div class="nav-wrapper">
+  <div
+    class="nav-wrapper"
+    :class="[
+      { 'admin-expanded': adminSidebarHandler() === 'expanded' },
+      { 'admin-collapsed': adminSidebarHandler() === 'collapsed' }
+    ]"
+  >
     <div v-for="navLink in menuItems" :key="navLink.id" class="link-wrapper">
       <NuxtLink class="link" :to="navLink.link">{{ navLink.name }}</NuxtLink>
       <div v-if="navLink.children.length > 0" class="expand-section-wrapper">
@@ -29,6 +35,18 @@
 <script setup>
 const menuItems = useNavigationItems();
 const parentToggle = useParentToggle();
+const isLoggedIn = useIsLoggedIn();
+const isExpanded = useNavigationToggle();
+
+function adminSidebarHandler() {
+  if (isLoggedIn.value && isExpanded.value) {
+    return 'expanded';
+  } else if (isLoggedIn.value && !isExpanded.value) {
+    return 'collapsed';
+  } else {
+    return '';
+  }
+}
 
 function handleParentToggle(btnName) {
   if (parentToggle.value === btnName) {
@@ -52,6 +70,16 @@ function handleParentToggle(btnName) {
   position: fixed;
   z-index: 1;
   width: 100%;
+}
+
+.admin-expanded {
+  transition: 0.2s ease-out;
+  width: calc(100% - $sidebar-width);
+}
+
+.admin-collapsed {
+  transition: 0.2s ease-out;
+  width: calc(100% - 64px);
 }
 
 .router-link-active {

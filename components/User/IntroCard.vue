@@ -25,14 +25,13 @@ const profileData = useProfileInfo();
 }
 
 .text-card-content {
-  width: 90%;
+  width: 80%;
   text-align: end;
 }
 
 .text-card-wrapper p {
   text-align: center;
   margin-left: auto;
-  width: 80%;
 }
 
 h4 {
