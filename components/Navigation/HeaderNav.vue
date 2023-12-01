@@ -73,11 +73,13 @@ function handleParentToggle(btnName) {
 }
 
 .admin-expanded {
-  width: calc(100% - 300px);
+  transition: 0.2s ease-out;
+  width: calc(100% - $sidebar-width);
 }
 
 .admin-collapsed {
-  width: calc(100% - 42px);
+  transition: 0.2s ease-out;
+  width: calc(100% - 64px);
 }
 
 .router-link-active {

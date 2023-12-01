@@ -8,7 +8,8 @@
   </div>
 
   <div v-else class="layout-wrapper">
-    <AppSidebar />
+    <!-- <AppSidebar /> -->
+    <NavigationSidebar />
     <div class="app-view-content">
       <NavigationHeaderNav />
       <div class="page-content">
@@ -31,11 +32,13 @@ const isAdmin = useIsLoggedIn();
 }
 
 .app-view-content {
-  width: 100%;
-  overflow: auto;
+  display: flex;
+  flex: 1 1 0;
 }
 
 .page-content {
+  width: 100%;
   padding-top: 103px;
+  overflow: auto;
 }
 </style>
