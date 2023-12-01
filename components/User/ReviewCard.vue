@@ -40,8 +40,8 @@ p:hover {
 }
 
 p:active {
-  box-shadow: 3px 3px 2px 1px rgba(78, 71, 47, 0.4);
   transform: translate(2px, 2px);
+  box-shadow: 3px 3px 2px 1px rgba(78, 71, 47, 0.4);
 }
 
 .material-icons-outlined {
