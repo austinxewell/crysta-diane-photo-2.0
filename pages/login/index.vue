@@ -24,6 +24,10 @@
 </template>
 
 <script setup>
+definePageMeta({
+  layout: 'plain'
+});
+
 const isLoggedIn = useIsLoggedIn();
 const showPassword = ref(false);
 
@@ -35,10 +39,6 @@ function togglePasswordView() {
     document.getElementById('form_input--password').type = 'password';
   }
 }
-
-definePageMeta({
-  layout: 'plain'
-});
 
 function login() {
   isLoggedIn.value = true;
