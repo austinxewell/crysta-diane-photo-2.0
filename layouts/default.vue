@@ -8,8 +8,7 @@
   </div>
 
   <div v-else class="layout-wrapper">
-    <!-- <AppSidebar /> -->
-    <NavigationSidebar />
+    <AppSidebar />
     <div class="app-view-content">
       <NavigationHeaderNav />
       <div class="page-content">
