@@ -3,7 +3,7 @@
     <footer class="footer-wrapper">
       <div class="content-wrapper">
         <section class="social-links-wrapper">
-          <h3>Contact:</h3>
+          <h3>Contact</h3>
           <ul>
             <li>Email: <a href="mailto:crystadianephotography@gmail.com">crystadianephotography@gmail.com</a></li>
             <li class="social-media-icon-wrapper">
@@ -37,6 +37,8 @@
 .footer-wrapper {
   background-color: $black-main;
   overflow: hidden;
+  padding-bottom: 32px;
+  padding-top: 32px;
 }
 
 .content-wrapper {

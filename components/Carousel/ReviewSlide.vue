@@ -5,8 +5,10 @@
         <div class="review-node-wrapper">
           <div class="review-node-content">
             <div class="node-content-wrapper">
-              <p class="review-text">{{ slide.review }}</p>
-              <p class="review-signature">- {{ slide.reviewedBy }}</p>
+              <section class="review-text-wrapper">
+                <p class="review-text">{{ slide.review }}</p>
+                <p class="review-signature">- {{ slide.reviewedBy }}</p>
+              </section>
               <p class="review-rating">
                 <span
                   v-for="(rating, index) in 5"
@@ -34,35 +36,35 @@ const dummyData = ref([
     id: 1,
     reviewedBy: 'Austin Ewell',
     review:
-      "Hello, it's me. I've been wondering if after all these years you'd like to meet to go over everything.",
+      "Hello, it's me. I've been wondering if after all these years you'd like to meet to go over everythingHello, it's me. I've been wondering if after all these years you'd like to meet to go over everythingHello, it's me. I've been wondering if after all these years you'd like to meet to go over everythingHello, it's me. I've been wondering if after all these years you'd like to meet to go over everything.",
     rating: 4
   },
   {
-    id: 1,
+    id: 2,
     reviewedBy: 'Willow Mendez',
     review: 'I fart on my boyfriend',
     rating: 5
   },
   {
-    id: 1,
+    id: 3,
     reviewedBy: 'Myla',
     review: 'I play make believe with flowers that they are food... except i really eat them',
     rating: 5
   },
   {
-    id: 1,
+    id: 4,
     reviewedBy: 'Sailor',
     review: 'Ouch. caca. akka. sorry. pweese',
     rating: 1
   },
   {
-    id: 1,
+    id: 5,
     reviewedBy: 'Austin Sir-Mix-Alot',
     review: 'I like big butts and I can not lie',
     rating: 2
   },
   {
-    id: 1,
+    id: 6,
     reviewedBy: 'Willard',
     review: 'Is she a duck or a tree, we may never know.',
     rating: 3
@@ -96,13 +98,22 @@ const breakpoints = {
   background-color: $primary;
   padding: 16px;
   border-radius: 10px;
-  overflow: auto;
   border: solid 1px $black-light;
   box-shadow: 12px 12px 2px 1px rgba(78, 71, 47, 0.1);
 }
 
 .node-content-wrapper {
   width: 100%;
+}
+
+.review-text-wrapper {
+  max-height: 140px;
+  overflow: auto;
+}
+
+.review-text {
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
 .review-signature {
