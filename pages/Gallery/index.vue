@@ -1,11 +1,12 @@
 <template>
-  <div class="gallery-content">
+  <div class="gallery-content" :class="{ '--fixed': viewPhoto }">
     <h3>Gallery</h3>
     <div class="pictures-container">
       <div v-for="img in dummyData" :key="img.id" class="card">
-        <img class="__img" :src="img.src" :alt="img.title" />
+        <img class="__img" :src="img.src" :alt="img.title" @click="setPhoto(img)" />
       </div>
     </div>
+    <ModalSelectImg v-if="viewPhoto" :imgData="selectedPhoto" @close-modal="closeModal" />
   </div>
 </template>
 
@@ -15,12 +16,28 @@ useHead({
 });
 
 const dummyData = useGalleryInfo();
+const viewPhoto = ref(false);
+const selectedPhoto = ref({});
+
+function setPhoto(val) {
+  selectedPhoto.value = val;
+  viewPhoto.value = true;
+}
+
+function closeModal() {
+  viewPhoto.value = false;
+}
 </script>
+
 <style lang="scss" scoped>
 .gallery-content {
   padding: 32px;
-  background-color: $gray-light;
   background: linear-gradient(to bottom, $gray-light 40%, $gray-dark 100%);
+
+  &.--fixed {
+    position: fixed;
+    z-index: 2;
+  }
 
   h3 {
     display: flex;
