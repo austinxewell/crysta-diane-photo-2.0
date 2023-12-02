@@ -17,12 +17,11 @@
         <span class="text">{{ navLink.name }}</span>
         <div v-if="navLink.children.length > 0" class="parent-icon">
           <i
-            v-if="adminParentToggle === navLink.name"
             class="material-icons-outlined"
+            :class="{ 'is-expanded': isParentExpanded(navLink.name) }"
             @click="handleAdminParentToggle(navLink.name)"
             >expand_less</i
           >
-          <i v-else class="material-icons-outlined" @click="handleAdminParentToggle(navLink.name)">expand_more</i>
         </div>
       </NuxtLink>
       <div v-if="navLink.children.length > 0 && !isExpanded" class="collapsed-parent-icon">
@@ -53,6 +52,12 @@ const navMenu = useNavigationItems();
 const isExpanded = useNavigationToggle();
 const adminParentToggle = useAdminParentToggle();
 const isLoggedIn = useIsLoggedIn();
+
+function isParentExpanded(val) {
+  if (adminParentToggle.value === val) {
+    return true;
+  } else return false;
+}
 
 function toggleMenu() {
   isExpanded.value = !isExpanded.value;
@@ -201,6 +206,11 @@ function logout() {
 
     .menu-item .parent-icon {
       margin-left: auto;
+
+      .is-expanded {
+        transform: rotate(180deg);
+        transition: 0.2s ease-out;
+      }
     }
 
     h3,
