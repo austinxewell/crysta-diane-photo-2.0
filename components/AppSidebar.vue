@@ -20,20 +20,19 @@
             class="material-icons-outlined"
             :class="{ 'is-expanded': isParentExpanded(navLink.name) }"
             @click="handleAdminParentToggle(navLink.name)"
-            >expand_less</i
+            >expand_more</i
           >
         </div>
       </NuxtLink>
       <div v-if="navLink.children.length > 0 && !isExpanded" class="collapsed-parent-icon">
         <i
-          v-if="adminParentToggle === navLink.name"
           class="material-icons-outlined"
+          :class="{ 'is-expanded': isParentExpanded(navLink.name) }"
           @click="handleAdminParentToggle(navLink.name)"
-          >expand_less</i
+          >expand_more</i
         >
-        <i v-else class="material-icons-outlined" @click="handleAdminParentToggle(navLink.name)">expand_more</i>
       </div>
-      <section v-if="adminParentToggle === navLink.name" class="child-section">
+      <section class="child-section" :class="{ 'is-expanded': isParentExpanded(navLink.name) }">
         <NuxtLink v-for="childNavLink in navLink.children" class="child-btn" :to="'/admin' + childNavLink.link">
           <span class="material-icons-outlined">{{ childNavLink.icon }}</span>
           <span class="text">{{ childNavLink.name }}</span>
@@ -136,12 +135,26 @@ function logout() {
   .menu-item {
     margin: 0 -16px;
     position: relative;
+
     .parent-icon {
       padding-top: 8px;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
 
     .has-children {
       flex-direction: column;
+    }
+
+    .child-section {
+      height: 0px;
+      overflow: hidden;
+
+      &.is-expanded {
+        height: fit-content;
+      }
     }
 
     .btn,
@@ -160,7 +173,6 @@ function logout() {
       }
 
       .text {
-        // display: none;
         font-size: 24px;
         transition: 0.2s ease-out;
       }
@@ -179,11 +191,20 @@ function logout() {
         border-right: solid 5px $primary-neutral;
       }
     }
-
     .collapsed-parent-icon {
       padding-left: 16px;
+
       .material-icons-outlined {
         font-size: 32px;
+
+        &.is-expanded {
+          transform: rotate(180deg);
+          transition: 0.2s ease-out;
+        }
+
+        &:hover {
+          cursor: pointer;
+        }
       }
     }
   }
@@ -209,7 +230,7 @@ function logout() {
 
       .is-expanded {
         transform: rotate(180deg);
-        transition: 0.2s ease-out;
+        transition: 0.2s ease-in-out;
       }
     }
 
