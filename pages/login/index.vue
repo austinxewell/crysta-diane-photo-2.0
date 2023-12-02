@@ -51,7 +51,6 @@ function login() {
 
   display: flex;
 
-  background-color: $gray-light;
   background: linear-gradient(to bottom, $gray-light 40%, $gray-dark 100%);
 
   .login-card {

@@ -27,7 +27,6 @@ const profileData = useProfileInfo();
 
 <style lang="scss" scoped>
 .dashboard-content {
-  background: $gray-light;
   background: linear-gradient(to bottom, $gray-light 40%, $gray-dark 100%);
 }
 .review-card-content {
