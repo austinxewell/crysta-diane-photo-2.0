@@ -14,7 +14,7 @@
           <span v-if="showPassword" class="material-icons-outlined" @click="togglePasswordView"> visibility </span>
           <span v-else class="material-icons-outlined" @click="togglePasswordView"> visibility_off </span>
         </label>
-        <button class="__btn">Sign In</button>
+        <button class="__btn" @click="login">Sign In</button>
       </form>
       <button class="__btn--forgot-password">Forgot Password</button>
     </div>
