@@ -3,7 +3,6 @@ export const useNavigationItems = () =>
     {
       id: 1,
       name: 'Home',
-      shortName: 'Home',
       icon: 'home',
       link: '/',
       children: []
@@ -11,7 +10,6 @@ export const useNavigationItems = () =>
     {
       id: 2,
       name: 'Gallery',
-      shortName: 'Gallery',
       icon: 'photo_library',
       link: '/gallery',
       children: []
@@ -19,58 +17,44 @@ export const useNavigationItems = () =>
     {
       id: 3,
       name: 'Services',
-      shortName: 'Services',
       icon: 'photo_camera',
       link: '/services',
       children: [
         {
           id: 1,
           name: 'Wedding',
-          shortName: 'Wedding',
-          icon: 'favorite',
-          link: '/services/wedding'
+          icon: 'favorite'
         },
         {
           id: 2,
           name: 'Maternity',
-          shortName: 'Maternity',
-          icon: 'pregnant_woman',
-          link: '/services/maternity'
+          icon: 'pregnant_woman'
         },
         {
           id: 3,
-          name: 'Individual/Head Shots',
-          shortName: 'Individual',
-          icon: 'person',
-          link: '/services/individual-headshots'
+          name: 'Head Shots',
+          icon: 'person'
         },
         {
           id: 4,
-          name: 'Family/Groups',
-          shortName: 'Groups',
-          icon: 'groups',
-          link: '/services/family-groups'
+          name: 'Groups',
+          icon: 'groups'
         },
         {
           id: 5,
           name: 'Couples',
-          shortName: 'Couples',
-          icon: 'group',
-          link: '/services/couples'
+          icon: 'group'
         },
         {
           id: 6,
           name: 'Seniors',
-          shortName: 'Seniors',
-          icon: 'school',
-          link: '/services/seniors'
+          icon: 'school'
         }
       ]
     },
     {
       id: 4,
       name: 'Contact',
-      shortName: 'Contact',
       icon: 'contact_page',
       link: '/contact',
       children: []
