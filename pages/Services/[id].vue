@@ -1,11 +1,16 @@
 <template>
-  <div class="service-content" id="service-content" :class="{ '--fixed': viewPhoto }">
+  <div class="service-content" id="service-content" :class="{ '--fixed': viewPhoto || openContactForm }">
     <header class="__header">
       <h3 class="__title">{{ weddingData.service }}</h3>
       <a href="#gallery" class="__gallery-link">&bull; View {{ weddingData.service }} Gallery &bull;</a>
     </header>
     <div class="card-wrapper">
-      <CommonServiceCard v-for="service in weddingData.serviceDetails" :key="service.id" :data="service" />
+      <CommonServiceCard
+        v-for="service in weddingData.serviceDetails"
+        :key="service.id"
+        :data="service"
+        @toggle-contact="toggleContact"
+      />
     </div>
     <CarouselGallerySlide
       class="__gallery"
@@ -14,15 +19,21 @@
       @toggle-value="toggleView"
     />
     <a href="#service-content">Back to top</a>
+    <ModalContactModal v-if="openContactForm" @toggle-contact="toggleContact" />
   </div>
 </template>
 
 <script setup>
 const weddingData = useWeddingInfo();
 const viewPhoto = ref(false);
+const openContactForm = ref(false);
 
 function toggleView(val) {
   viewPhoto.value = val;
+}
+
+function toggleContact() {
+  openContactForm.value = !openContactForm.value;
 }
 </script>
 
