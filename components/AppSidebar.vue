@@ -33,7 +33,11 @@
         >
       </div>
       <section class="child-section" :class="{ 'is-expanded': isParentExpanded(navLink.name) }">
-        <NuxtLink v-for="childNavLink in navLink.children" class="child-btn" :to="'/admin' + childNavLink.link">
+        <NuxtLink
+          v-for="childNavLink in navLink.children"
+          class="child-btn"
+          :to="`/admin/services/${childNavLink.id}`"
+        >
           <span class="material-icons-outlined">{{ childNavLink.icon }}</span>
           <span class="text">{{ childNavLink.name }}</span>
         </NuxtLink>

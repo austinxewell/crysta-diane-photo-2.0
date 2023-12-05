@@ -23,38 +23,32 @@ export const useNavigationItems = () =>
         {
           id: 1,
           name: 'Wedding',
-          icon: 'favorite',
-          link: '/services/wedding'
+          icon: 'favorite'
         },
         {
           id: 2,
           name: 'Maternity',
-          icon: 'pregnant_woman',
-          link: '/services/maternity'
+          icon: 'pregnant_woman'
         },
         {
           id: 3,
           name: 'Head Shots',
-          icon: 'person',
-          link: '/services/individual-headshots'
+          icon: 'person'
         },
         {
           id: 4,
           name: 'Groups',
-          icon: 'groups',
-          link: '/services/family-groups'
+          icon: 'groups'
         },
         {
           id: 5,
           name: 'Couples',
-          icon: 'group',
-          link: '/services/couples'
+          icon: 'group'
         },
         {
           id: 6,
           name: 'Seniors',
-          icon: 'school',
-          link: '/services/seniors'
+          icon: 'school'
         }
       ]
     },
