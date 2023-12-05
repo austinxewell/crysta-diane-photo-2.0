@@ -17,6 +17,7 @@
         <button class="__btn" @click="login">Sign In</button>
       </form>
       <button class="__btn--forgot-password">Forgot Password</button>
+      <NuxtLink class="__btn--to-home" to="/">Back to Home Page</NuxtLink>
     </div>
   </div>
 </template>
@@ -119,6 +120,26 @@ function login() {
     }
 
     .__btn--forgot-password {
+      width: 100%;
+
+      padding: 4px;
+      margin-top: 16px;
+
+      color: $black-main;
+      background-color: $white-main;
+      border: solid 1px $black-main;
+      border-radius: 5px;
+      box-shadow: 5px 5px 2px 1px rgba(78, 71, 47, 0.1);
+
+      &:active {
+        transform: translate(2px, 2px);
+        box-shadow: 3px 3px 2px 1px rgba(78, 71, 47, 0.4);
+      }
+    }
+
+    .__btn--to-home {
+      display: flex;
+      justify-content: center;
       width: 100%;
 
       padding: 4px;

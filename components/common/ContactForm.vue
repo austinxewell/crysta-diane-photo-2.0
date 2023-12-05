@@ -46,6 +46,12 @@ function submitForm() {
     color: $white-main;
     font-size: 20px;
     border-radius: 8px;
+    box-shadow: 5px 5px 2px 1px rgba(78, 71, 47, 0.1);
+
+    &:active {
+      transform: translate(2px, 2px);
+      box-shadow: 3px 3px 2px 1px rgba(78, 71, 47, 0.4);
+    }
 
     &:hover {
       cursor: pointer;
