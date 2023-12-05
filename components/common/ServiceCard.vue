@@ -20,10 +20,10 @@
           >
           <NuxtLink class="__btn --gallery" to="/gallery">View Gallery</NuxtLink>
         </div>
-        <NuxtLink class="__btn --inquire" to="/contact">
+        <button class="__btn --inquire" @click="toggleContactForm">
           INQUIRE NOW
           <span class="material-icons-outlined"> arrow_right_alt </span>
-        </NuxtLink>
+        </button>
       </div>
     </div>
     <CommonMultiPackageIcon v-if="data.hasMultiplePackages" class="__multi-icon" />
@@ -37,6 +37,12 @@ const props = defineProps({
     required: true
   }
 });
+
+const emit = defineEmits(['toggle-contact']);
+
+function toggleContactForm() {
+  emit('toggle-contact');
+}
 </script>
 
 <style lang="scss" scoped>
@@ -114,6 +120,12 @@ const props = defineProps({
         background-color: $black-main;
         border: solid 2px $black-main;
         border-radius: 12px;
+        box-shadow: 5px 5px 2px 1px rgba(78, 71, 47, 0.1);
+
+        &:active {
+          transform: translate(2px, 2px);
+          box-shadow: 3px 3px 2px 1px rgba(78, 71, 47, 0.4);
+        }
 
         .material-icons-outlined {
           padding-left: 8px;
