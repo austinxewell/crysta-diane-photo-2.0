@@ -21,7 +21,9 @@
 
 <script setup>
 const isZoomed = ref(false);
+
 const emit = defineEmits(['close-modal']);
+
 const props = defineProps({
   imgData: {
     type: Object,
@@ -54,7 +56,7 @@ function closeModal() {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1;
+  z-index: 3;
   overflow: scroll;
 
   background-color: rgba(0, 0, 0, 0.9);

@@ -23,7 +23,9 @@
       <div v-if="parentToggle === navLink.name" class="dropdown-wrapper">
         <ul>
           <li v-for="childNavLink in navLink.children">
-            <NuxtLink class="link" :to="childNavLink.link">{{ childNavLink.name }}</NuxtLink>
+            <NuxtLink class="link" :to="childNavLink.link" @click="closeParentToggle">{{
+              childNavLink.name
+            }}</NuxtLink>
           </li>
         </ul>
       </div>
@@ -55,6 +57,10 @@ function handleParentToggle(btnName) {
     parentToggle.value = btnName;
   }
 }
+
+function closeParentToggle() {
+  parentToggle.value = '';
+}
 </script>
 
 <style lang="scss" scoped>
@@ -68,7 +74,7 @@ function handleParentToggle(btnName) {
   padding: 16px 24px 24px 0;
   font-size: 18px;
   position: fixed;
-  z-index: 1;
+  z-index: 2;
   width: 100%;
 }
 
