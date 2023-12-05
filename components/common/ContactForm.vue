@@ -1,26 +1,111 @@
 <template>
   <div class="contact-form-wrapper">
     <CommonMainLogo class="logo" />
-    <form class="form">
-      <input class="__input --name" type="text" placeholder="Name:" />
-      <input class="__input --email" type="email" placeholder="Email:" />
-      <input class="__input --tel" type="tel" placeholder="Phone Number:" />
-      <input class="__input --text" type="text" placeholder="Desired Location" />
-      <select class="--service" name="Service:" id="">
-        <option value="" hidden>Select Service:</option>
-        <option value="weddings">Weddings</option>
-        <option value="maternity">Maternity</option>
-        <option value="head shots">Head Shots</option>
+    <form class="form" @submit.prevent="submitForm">
+      <p class="__text">Required Fields are Indicated With a *</p>
+      <input
+        class="__input --name"
+        :class="{ '--error': fullNameErr }"
+        type="text"
+        v-model="fullName"
+        :placeholder="fullNamePlaceholder"
+      />
+      <input
+        class="__input --email"
+        :class="{ '--error': emailErr }"
+        type="email"
+        v-model="email"
+        :placeholder="emailPlaceholder"
+      />
+      <input
+        class="__input --tel"
+        :class="{ '--error': phoneNumberErr }"
+        type="tel"
+        v-model="phoneNumber"
+        :placeholder="phoneNumberPlaceholder"
+      />
+      <input class="__input --text" type="text" v-model="location" placeholder="Desired Location" />
+      <select class="--service" v-model="service">
+        <option class="--option" value="" hidden>Select Service:</option>
+        <option class="--option">Weddings</option>
+        <option class="--option">Maternity</option>
+        <option class="--option">Head Shots</option>
       </select>
-      <textarea class="__input" name="" id="" rows="5" placeholder="Please Leave a Detailed Message..."></textarea>
+      <textarea
+        class="__input"
+        :class="{ '--error': messageErr }"
+        v-model="message"
+        rows="5"
+        :placeholder="messagePlaceholder"
+      ></textarea>
     </form>
-    <button class="__btn" @click="submitForm">Submit</button>
+    <button type="submit" class="__btn" @click="submitForm">Submit</button>
   </div>
 </template>
 
 <script setup>
+const fullName = ref('');
+const email = ref('');
+const phoneNumber = ref('');
+const location = ref('');
+const service = ref('');
+const message = ref('');
+
+const fullNamePlaceholder = ref('* Name:');
+const emailPlaceholder = ref('* Email:');
+const phoneNumberPlaceholder = ref('* Phone Number:');
+const messagePlaceholder = ref('* Please Leave a Detailed Message...');
+
+const fullNameErr = ref(false);
+const emailErr = ref(false);
+const phoneNumberErr = ref(false);
+const messageErr = ref(false);
+
 function submitForm() {
-  console.log('validate form');
+  var form = {};
+  form.fullName = fullName.value;
+  form.email = email.value;
+  form.phoneNumber = phoneNumber.value;
+  form.location = location.value;
+  form.service = service.value;
+  form.message = message.value;
+
+  if (validateForm(form)) {
+    console.log('submit form');
+  }
+}
+
+function validateForm(form) {
+  var isFormValid = true;
+  var validName = /^[a-zA-Z]*$/;
+  var validEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+  var validPhoneNumber = /^(\+0?1\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/;
+
+  if (form.fullName.length < 3 || validName.test(form.fullName) === false) {
+    fullNameErr.value = true;
+    fullName.value = '';
+    fullNamePlaceholder.value = '* Please Enter a Valid Name';
+    isFormValid = false;
+  }
+  if (validEmail.test(form.email) === false) {
+    emailErr.value = true;
+    email.value = '';
+    emailPlaceholder.value = '* Please Enter a Valid Email';
+    isFormValid = false;
+  }
+  if (validPhoneNumber.test(form.phoneNumber) === false) {
+    phoneNumberErr.value = true;
+    phoneNumber.value = '';
+    phoneNumberPlaceholder.value = '* Please Enter a Valid Phone Number';
+    isFormValid = false;
+  }
+  if (form.message.length < 12) {
+    messageErr.value = true;
+    message.value = '';
+    messagePlaceholder.value = '* Detailed Message is Required';
+    isFormValid = false;
+  }
+  return isFormValid;
 }
 </script>
 
@@ -67,6 +152,11 @@ function submitForm() {
 
     font-size: 18px;
 
+    .__text {
+      text-align: center;
+      padding: 16px;
+    }
+
     .__input {
       padding: 4px;
       text-align: center;
@@ -78,15 +168,19 @@ function submitForm() {
       }
     }
 
-    select {
+    .--error::placeholder {
+      color: red;
+    }
+
+    .--service {
       padding: 4px;
       text-align: center;
       border-radius: 8px;
-    }
 
-    option {
-      text-align: center;
-      font-weight: bolder;
+      .--option {
+        text-align: center;
+        font-weight: bolder;
+      }
     }
   }
 }
