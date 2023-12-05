@@ -28,6 +28,10 @@ const weddingData = useWeddingInfo();
 const viewPhoto = ref(false);
 const openContactForm = ref(false);
 
+useHead({
+  title: weddingData.value.service
+});
+
 function toggleView(val) {
   viewPhoto.value = val;
 }

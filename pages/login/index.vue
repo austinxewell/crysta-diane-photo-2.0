@@ -23,6 +23,10 @@
 </template>
 
 <script setup>
+useHead({
+  title: 'Login'
+});
+
 definePageMeta({
   layout: 'plain'
 });

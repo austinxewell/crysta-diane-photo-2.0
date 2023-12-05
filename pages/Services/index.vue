@@ -14,6 +14,10 @@
 </template>
 
 <script setup>
+useHead({
+  title: 'Services'
+});
+
 const serviceData = useServiceInfo();
 const openContactForm = ref(false);
 

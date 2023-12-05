@@ -1,7 +1,7 @@
 <template>
   <div class="contact-form-wrapper">
     <CommonMainLogo class="logo" />
-    <form class="form" @submit.prevent="submitForm">
+    <form class="form">
       <p class="__text">Required Fields are Indicated With a *</p>
       <input
         class="__input --name"
@@ -27,9 +27,7 @@
       <input class="__input --text" type="text" v-model="location" placeholder="Desired Location" />
       <select class="--service" v-model="service">
         <option class="--option" value="" hidden>Select Service:</option>
-        <option class="--option">Weddings</option>
-        <option class="--option">Maternity</option>
-        <option class="--option">Head Shots</option>
+        <option class="--option" v-for="service in services" :key="service.id">{{ service.name }}</option>
       </select>
       <textarea
         class="__input"
@@ -44,6 +42,9 @@
 </template>
 
 <script setup>
+const navData = useNavigationItems();
+const services = navData.value[2].children;
+
 const fullName = ref('');
 const email = ref('');
 const phoneNumber = ref('');

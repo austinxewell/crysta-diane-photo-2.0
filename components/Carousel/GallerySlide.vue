@@ -38,6 +38,10 @@ const breakpoints = {
   1024: {
     itemsToShow: 2,
     snapAlign: 'start'
+  },
+  1280: {
+    itemsToShow: 3,
+    snapAlign: 'start'
   }
 };
 

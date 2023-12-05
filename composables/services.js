@@ -30,7 +30,7 @@ var weddingDummyData = {
     },
     {
       id: 1,
-      serviceName: 'Gold',
+      serviceName: 'Platinum',
       serviceImg:
         'https://images.squarespace-cdn.com/content/v1/58b78ae1e6f2e114e848131b/b06e0778-9bfc-4a83-ad67-59e32cbe704a/The-Rockleigh-Indian-American-Wedding-Cassi-Claire_01.jpg',
       priceRange: [900],

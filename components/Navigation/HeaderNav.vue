@@ -23,7 +23,7 @@
       <div v-if="parentToggle === navLink.name" class="dropdown-wrapper">
         <ul>
           <li v-for="childNavLink in navLink.children">
-            <NuxtLink class="link" :to="childNavLink.link" @click="closeParentToggle">{{
+            <NuxtLink class="link" :to="`/services/${childNavLink.id}`" @click="closeParentToggle">{{
               childNavLink.name
             }}</NuxtLink>
           </li>
@@ -112,8 +112,9 @@ function closeParentToggle() {
 
 .dropdown-wrapper {
   background: $black-main;
-  color: $white-main;
+  padding: 0 16px 16px 16px;
   width: max-content;
+  color: $white-main;
   position: absolute;
   margin-top: 68px;
   z-index: 1;
