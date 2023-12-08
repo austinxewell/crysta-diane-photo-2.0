@@ -1,5 +1,5 @@
 <template>
-  <div class="dashboard-content">
+  <div class="dashboard-content" :class="{ '--fixed': isReviewOpen }">
     <CarouselAutoSlide />
     <div>
       <div class="intro-wrapper">
@@ -8,7 +8,7 @@
           <section class="review-pre-text">
             <h4>{{ profileData.reviewHeader }}</h4>
             <p>{{ profileData.reviewText }}</p>
-            <button>&bull; Leave a Review &bull;</button>
+            <button @click="toggleReview">&bull; Leave a Review &bull;</button>
           </section>
         </div>
         <div class="divider"></div>
@@ -16,18 +16,29 @@
           <CommonFullAvi />
         </div>
       </div>
-      <UserReviewCard class="review-card-content" />
+      <UserReviewCard class="review-card-content" @toggle-review="toggleReview" />
+      <ModalLeaveReview v-if="isReviewOpen" @toggle-review="toggleReview" />
     </div>
   </div>
 </template>
 
 <script setup>
 const profileData = useProfileInfo();
+const isReviewOpen = ref(false);
+
+function toggleReview() {
+  isReviewOpen.value = !isReviewOpen.value;
+}
 </script>
 
 <style lang="scss" scoped>
 .dashboard-content {
   background: linear-gradient(to bottom, $gray-light 40%, $gray-dark 100%);
+
+  &.--fixed {
+    position: fixed;
+    z-index: 2;
+  }
 }
 .review-card-content {
   margin: auto;

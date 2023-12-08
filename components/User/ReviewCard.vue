@@ -3,15 +3,17 @@
     <h3>&bull; Reviews &bull;</h3>
     <CarouselReviewSlide />
     <div class="leave-review-btn">
-      <p>
+      <button @click="emit('toggle-review')">
         <span class="material-icons-outlined"> add </span>
         Leave Review
-      </p>
+      </button>
     </div>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+const emit = defineEmits(['toggle-review']);
+</script>
 
 <style lang="scss" scoped>
 h3 {
@@ -25,7 +27,7 @@ h3 {
   justify-content: flex-end;
 }
 
-p {
+button {
   display: flex;
   vertical-align: middle;
   background-color: $primary;
@@ -35,11 +37,7 @@ p {
   box-shadow: 5px 5px 2px 1px rgba(78, 71, 47, 0.1);
 }
 
-p:hover {
-  cursor: pointer;
-}
-
-p:active {
+button:active {
   transform: translate(2px, 2px);
   box-shadow: 3px 3px 2px 1px rgba(78, 71, 47, 0.4);
 }
