@@ -19,7 +19,7 @@
       @toggle-value="toggleView"
     />
     <a href="#service-content">Back to top</a>
-    <ModalContactModal v-if="openContactForm" @toggle-contact="toggleContact" />
+    <ModalContactForm v-if="openContactForm" @toggle-contact="toggleContact" />
   </div>
 </template>
 

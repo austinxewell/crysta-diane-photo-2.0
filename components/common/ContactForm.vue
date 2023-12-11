@@ -37,7 +37,7 @@
         :placeholder="messagePlaceholder"
       ></textarea>
     </form>
-    <button type="submit" class="__btn" @click="submitForm">Submit</button>
+    <button class="__btn" @click="submitForm">Submit</button>
   </div>
 </template>
 

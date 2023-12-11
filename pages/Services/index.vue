@@ -9,7 +9,7 @@
         @toggle-contact="toggleContact"
       />
     </div>
-    <ModalContactModal v-if="openContactForm" @toggle-contact="toggleContact" />
+    <ModalContactForm v-if="openContactForm" @toggle-contact="toggleContact" />
   </div>
 </template>
 
