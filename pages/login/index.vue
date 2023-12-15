@@ -6,10 +6,12 @@
         <h2 class="__title">Sign In As Admin</h2>
         <label class="__label">
           <p>Email</p>
+          <p class="text-red-500" v-if="errorBag.email">{{ errorBag.email }}</p>
           <input class="__input" type="email" v-model="userForm.email" />
         </label>
         <label class="__label">
           <p>Password</p>
+          <p class="text-red-500" v-if="errorBag.password">{{ errorBag.password }}</p>
           <input class="__input" id="form__input--password" type="password" v-model="userForm.password" />
           <span v-if="showPassword" class="material-icons-outlined" @click="togglePasswordView"> visibility </span>
           <span v-else class="material-icons-outlined" @click="togglePasswordView"> visibility_off </span>
@@ -39,7 +41,6 @@ const userForm = reactive({
 const { errorBag, login } = useAuth();
 
 function process() {
-  console.log('process');
   login(userForm);
 }
 

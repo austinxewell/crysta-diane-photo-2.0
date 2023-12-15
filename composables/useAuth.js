@@ -19,6 +19,8 @@ export default function useAuth() {
   const auth = getAuth();
 
   function login({ email, password }) {
+    resetErrors();
+
     console.log('email: ' + email, 'password: ' + password);
     const validatedData = useAuthValidator({ email, password });
 
@@ -42,9 +44,12 @@ export default function useAuth() {
   }
 
   function signUp({ email, password }) {
-    console.log(email, password);
     resetErrors();
+
+    console.log('email: ' + email, 'password: ' + password);
     const validatedData = useAuthValidator({ email, password });
+
+    console.log(validatedData);
     if (!validatedData.flag) {
       errorBag.value = validatedData;
       return;
@@ -54,7 +59,8 @@ export default function useAuth() {
       createUserWithEmailAndPassword(auth, email, password).then((userDetails) => {
         user.value = userDetails.user;
         userDetails.user.getIdToken().then((token) => {
-          serverAuth(token);
+          console.log(token);
+          // serverAuth(token);
         });
       });
     });

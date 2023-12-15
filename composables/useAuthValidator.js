@@ -19,12 +19,15 @@ export default function useAuthValidator({ email, password }) {
     };
 
     if (err instanceof z.ZodError) {
+      console.log('inside');
       const zodIssues = err.issues;
 
       for (let i = 0; i < zodIssues.length; i++) {
         errors[zodIssues[i].path[0]] = zodIssues[i].message;
       }
     }
+
+    console.log('ERRORS', errors);
     return errors;
   }
 }

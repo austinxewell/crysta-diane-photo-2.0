@@ -2,19 +2,21 @@
   <div class="app-wrapper">
     <div class="login-card">
       <CommonMainLogo class="__logo" />
-      <form class="__form" @submit.prevent="login">
+      <form class="__form" @submit.prevent="process">
         <h2 class="__title">Sign Up As Admin</h2>
         <label class="__label">
           <p>Email</p>
+          <p class="text-red-500" v-if="errorBag.email">{{ errorBag.password }}</p>
           <input class="__input" type="email" v-model="userForm.email" />
         </label>
         <label class="__label">
           <p>Password</p>
+          <p class="text-red-500" v-if="errorBag.password">{{ errorBag.password }}</p>
           <input class="__input" id="form__input--password" type="password" v-model="userForm.password" />
           <span v-if="showPassword" class="material-icons-outlined" @click="togglePasswordView"> visibility </span>
           <span v-else class="material-icons-outlined" @click="togglePasswordView"> visibility_off </span>
         </label>
-        <button class="__btn" @click.stop="process">Sign Up</button>
+        <button class="__btn">Sign Up</button>
       </form>
       <NuxtLink class="__btn--to-home" to="/">Back to Home Page</NuxtLink>
     </div>
@@ -35,7 +37,6 @@ const userForm = reactive({
   password: ''
 });
 
-const isLoggedIn = useIsLoggedIn();
 const showPassword = ref(false);
 const { errorBag, signUp } = useAuth();
 
@@ -50,7 +51,6 @@ function togglePasswordView() {
 
 function process() {
   signUp(userForm);
-  // useRouter().push('/admin/');
 }
 </script>
 
