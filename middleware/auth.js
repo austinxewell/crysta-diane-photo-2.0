@@ -1,7 +1,12 @@
 export default defineNuxtRouteMiddleware((to, from) => {
-  const userIsLoggedIn = useIsLoggedIn();
+  const isLoggedIn = useIsLoggedIn();
 
-  if (!userIsLoggedIn.value) {
+  if (process.server) {
+    const authCookie = useCookie('authCookie');
+    isLoggedIn.value = authCookie.value ? true : false;
+  }
+
+  if (!isLoggedIn.value) {
     return navigateTo({ path: '/login' });
   }
 });
