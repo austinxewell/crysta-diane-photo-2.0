@@ -10,8 +10,9 @@ const firebaseConfig = {
 };
 
 export default function useFirebase() {
+  console.log('FIREBASE SERVER FILE');
   if (getApps().length == 0) {
-    console.log('FIREBASE SERVER FILE');
+    console.log('inside if');
     initializeApp(firebaseConfig);
   }
 }

@@ -49,7 +49,6 @@ export default function useAuth() {
     console.log('email: ' + email, 'password: ' + password);
     const validatedData = useAuthValidator({ email, password });
 
-    console.log(validatedData);
     if (!validatedData.flag) {
       errorBag.value = validatedData;
       return;

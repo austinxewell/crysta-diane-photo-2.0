@@ -19,7 +19,6 @@ export default function useAuthValidator({ email, password }) {
     };
 
     if (err instanceof z.ZodError) {
-      console.log('inside');
       const zodIssues = err.issues;
 
       for (let i = 0; i < zodIssues.length; i++) {
@@ -27,7 +26,6 @@ export default function useAuthValidator({ email, password }) {
       }
     }
 
-    console.log('ERRORS', errors);
     return errors;
   }
 }
