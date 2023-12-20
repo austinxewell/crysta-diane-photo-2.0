@@ -14,8 +14,6 @@ export default function useAuth() {
     password: null
   });
 
-  useFirebase();
-
   const auth = getAuth();
 
   function login({ email, password }) {

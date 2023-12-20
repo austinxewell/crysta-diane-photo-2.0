@@ -1,9 +1,6 @@
-import firebaseServer from '../utils/firebaseServer';
 import { getAuth } from 'firebase-admin/auth';
 
 export default defineEventHandler(async (event) => {
-  firebaseServer();
-
   const { token } = await readBody(event);
   const expiresIn = 60 * 60 * 24 * 5 * 1000;
 
