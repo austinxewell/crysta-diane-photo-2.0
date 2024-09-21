@@ -2,51 +2,55 @@
   <div class="app-wrapper">
     <div class="login-card">
       <CommonMainLogo class="__logo" />
-      <form class="__form" @submit.prevent="loginButton">
-        <h2 class="__title">Sign In As Admin</h2>
+      <form class="__form" @submit.prevent="process">
+        <h2 class="__title">Sign Up As Admin</h2>
         <label class="__label">
           <p>Email</p>
-          <input class="__input" type="email" v-model="userForm.user_email" />
+          <p class="text-red-500" v-if="errorBag.email">{{ errorBag.password }}</p>
+          <input class="__input" type="email" v-model="userForm.email" />
         </label>
         <label class="__label">
           <p>Password</p>
-          <input class="__input" id="form__input--password" type="password" v-model="userForm.user_password" />
-          <span v-if="showPassword" class="material-icons-outlined" @click="togglePasswordView()">visibility</span>
-          <span v-else class="material-icons-outlined" @click="togglePasswordView()">visibility_off</span>
+          <p class="text-red-500" v-if="errorBag.password">{{ errorBag.password }}</p>
+          <input class="__input" id="form__input--password" type="password" v-model="userForm.password" />
+          <span v-if="showPassword" class="material-icons-outlined" @click="togglePasswordView"> visibility </span>
+          <span v-else class="material-icons-outlined" @click="togglePasswordView"> visibility_off </span>
         </label>
-        <button type="submit" class="__btn">Sign In</button>
+        <button class="__btn">Sign Up</button>
       </form>
-      <button class="__btn--forgot-password">Forgot Password</button>
       <NuxtLink class="__btn--to-home" to="/">Back to Home Page</NuxtLink>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, reactive } from 'vue';
-import { useLoginStore } from '~/stores/login';
-import { useRouter } from 'vue-router';
-
-const loginStore = useLoginStore();
-const router = useRouter();
-
-const showPassword = ref(false);
-const userForm = reactive({
-  user_email: '',
-  user_password: ''
+useHead({
+  title: 'Login'
 });
 
-async function loginButton() {
-  try {
-    await loginStore.login(userForm, router);
-  } catch (error) {
-    console.error('Login error:', error);
-  }
-}
+definePageMeta({
+  layout: 'plain'
+});
+
+const userForm = reactive({
+  email: '',
+  password: ''
+});
+
+const showPassword = ref(false);
+const { errorBag, signUp } = useAuth();
 
 function togglePasswordView() {
   showPassword.value = !showPassword.value;
-  document.getElementById('form__input--password').type = showPassword.value ? 'text' : 'password';
+  if (showPassword.value) {
+    document.getElementById('form__input--password').type = 'text';
+  } else {
+    document.getElementById('form__input--password').type = 'password';
+  }
+}
+
+function process() {
+  signUp(userForm);
 }
 </script>
 

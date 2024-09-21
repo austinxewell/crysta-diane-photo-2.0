@@ -20,8 +20,9 @@
             class="material-icons-outlined"
             :class="{ 'is-expanded': isParentExpanded(navLink.name) }"
             @click="handleAdminParentToggle(navLink.name)"
-            >expand_more</i
           >
+            expand_more
+          </i>
         </div>
       </NuxtLink>
       <div v-if="navLink.children.length > 0 && !isExpanded" class="collapsed-parent-icon">
@@ -29,8 +30,9 @@
           class="material-icons-outlined"
           :class="{ 'is-expanded': isParentExpanded(navLink.name) }"
           @click="handleAdminParentToggle(navLink.name)"
-          >expand_more</i
         >
+          expand_more
+        </i>
       </div>
       <section class="child-section" :class="{ 'is-expanded': isParentExpanded(navLink.name) }">
         <NuxtLink
@@ -44,17 +46,19 @@
       </section>
     </div>
     <button class="btn logout" @click="logout">
-      <span class="material-icons-outlined nav-icon"> logout </span>
+      <span class="material-icons-outlined nav-icon">logout</span>
       <span class="text">Logout</span>
     </button>
   </div>
 </template>
 
 <script setup>
+import { useLoginStore } from '~/stores/login';
+
+const loginStore = useLoginStore();
 const navMenu = useNavigationItems();
 const isExpanded = useNavigationToggle();
 const adminParentToggle = useAdminParentToggle();
-const isLoggedIn = useIsLoggedIn();
 
 function isParentExpanded(val) {
   if (adminParentToggle.value === val) {
@@ -74,8 +78,8 @@ function handleAdminParentToggle(btnName) {
   }
 }
 
-function logout() {
-  isLoggedIn.value = false;
+async function logout() {
+  await loginStore.logout();
   return navigateTo({ path: '/' });
 }
 </script>

@@ -5,6 +5,47 @@
   "trailingComma": "none",
   "bracketSpacing": true,
   "bracketSameLine": false,
+  "parser": "babel",
   "proseWrap": "preserve",
-  "endOfLine": "auto"
+  "overrides": [
+    {
+      "files": "*.vue",
+      "options": {
+        "parser": "vue",
+        "vueIndentScriptAndStyle": false,
+        "htmlWhitespaceSensitivity": "ignore",
+        "endOfLine": "auto"
+      }
+    }
+  ],
+  "endOfLine": "auto",
+  "attributeGroups": [
+    "^v-for$",
+    "^v-(if|else-if|else)$",
+    "^v-show$",
+    "^id$",
+    "^:?id$",
+    "^:?key$",
+    "^ref$",
+    "^:ref$",
+    "^#",
+    "^v-model$",
+    "^v-model",
+    "^v-custom?",
+    "^class$",
+    "$DEFAULT",
+    "^v-cloak$",
+    "^v-pre$",
+    "^v-once$",
+    "^type$",
+    "^:?is$",
+    "^:?ref$",
+    "^:?class$",
+    "^:(?!data-)",
+    "^:?data-",
+    "^@",
+    "^v-html$",
+    "^v-text$",
+    "^v-binds$"
+  ]
 }

@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   css: ['~/assets/scss/main.scss'],
+
   vite: {
     css: {
       preprocessorOptions: {
@@ -10,8 +11,10 @@ export default defineNuxtConfig({
       }
     }
   },
+
   devtools: { enabled: true },
-  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/google-fonts', 'vue3-carousel-nuxt'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/google-fonts', 'vue3-carousel-nuxt', '@pinia/nuxt'],
+
   app: {
     head: {
       link: [
@@ -25,5 +28,7 @@ export default defineNuxtConfig({
         }
       ]
     }
-  }
+  },
+
+  compatibilityDate: '2024-09-21'
 });
