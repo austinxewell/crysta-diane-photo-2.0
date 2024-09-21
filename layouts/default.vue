@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!isAdmin">
+  <div v-if="!isLoggedIn">
     <NavigationHeaderNav />
     <div class="page-content">
       <slot></slot>
@@ -20,7 +20,18 @@
 </template>
 
 <script setup>
-const isAdmin = useIsLoggedIn();
+import { onMounted, computed } from 'vue';
+import { useLoginStore } from '~/stores/login';
+
+const loginStore = useLoginStore();
+
+// Make isLoggedIn reactive using computed
+const isLoggedIn = computed(() => loginStore.isLoggedIn);
+
+// Call the initialize action when the layout is mounted
+onMounted(async () => {
+  await loginStore.initialize(); // Ensures the token is validated when the layout is loaded
+});
 </script>
 
 <style lang="scss" scoped>

@@ -7,6 +7,10 @@
 </template>
 
 <script setup>
+import { useLoginStore } from '~/stores/login';
+const store = useLoginStore();
+const { isLoggedIn } = store;
+
 useHead({
   titleTemplate: (titleChunk) => {
     return titleChunk ? `${titleChunk} - Crysta Diane Photography` : 'Crysta Diane Photography';
