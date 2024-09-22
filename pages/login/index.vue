@@ -39,8 +39,8 @@ const userForm = reactive({
 async function loginButton() {
   try {
     await loginStore.login(userForm, router);
-  } catch (error) {
-    console.error('Login error:', error);
+  } catch (err) {
+    console.error('Login error:', err);
   }
 }
 

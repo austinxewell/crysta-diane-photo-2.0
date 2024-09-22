@@ -3,8 +3,8 @@
     <div>
       <section class="text-card-wrapper">
         <div class="text-card-content">
-          <h4>{{ profileData.intro }}</h4>
-          <p>{{ profileData.aboutMe }}</p>
+          <h4>{{ clientWebsiteInfo.website_greeting }}</h4>
+          <p>{{ clientWebsiteInfo.website_about }}</p>
         </div>
       </section>
     </div>
@@ -12,7 +12,12 @@
 </template>
 
 <script setup>
-const profileData = useProfileInfo();
+defineProps({
+  clientWebsiteInfo: {
+    type: Object,
+    require: true
+  }
+});
 </script>
 
 <style lang="scss" scoped>

@@ -4,16 +4,16 @@
     <div>
       <div class="intro-wrapper">
         <div class="left-side">
-          <UserIntroCard />
+          <UserIntroCard :clientWebsiteInfo="clientWebsiteInfo" />
           <section class="review-pre-text">
-            <h4>{{ profileData.reviewHeader }}</h4>
-            <p>{{ profileData.reviewText }}</p>
+            <h4>{{ clientWebsiteInfo.website_review_header }}</h4>
+            <p>{{ clientWebsiteInfo.website_review_text }}</p>
             <button @click="toggleReview">&bull; Leave a Review &bull;</button>
           </section>
         </div>
         <div class="divider"></div>
         <div class="right-side">
-          <CommonFullAvi />
+          <CommonFullAvi :clientWebsiteInfo="clientWebsiteInfo" />
         </div>
       </div>
       <UserReviewCard class="review-card-content" @toggle-review="toggleReview" />
@@ -23,8 +23,21 @@
 </template>
 
 <script setup>
-const profileData = useProfileInfo();
+import { ref, reactive, onMounted } from 'vue';
+import { useWebsiteStore } from '~/stores/website';
+
+const websiteStore = useWebsiteStore();
+const clientWebsiteInfo = reactive({});
 const isReviewOpen = ref(false);
+
+onMounted(async () => {
+  try {
+    await websiteStore.fetchWebsiteInfo();
+    Object.assign(clientWebsiteInfo, websiteStore.websiteInfo);
+  } catch (err) {
+    console.error('Error Fetching Website Info:', err);
+  }
+});
 
 function toggleReview() {
   isReviewOpen.value = !isReviewOpen.value;

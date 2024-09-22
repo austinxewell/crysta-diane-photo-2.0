@@ -1,15 +1,20 @@
 <template>
   <div class="avi-wrapper">
     <section>
-      <NuxtLink class="gallery-btn" to="/gallery">Come See Some Of My Work!</NuxtLink>
+      <NuxtLink class="gallery-btn" to="/gallery">{{ clientWebsiteInfo.website_comment }}</NuxtLink>
       <div class="arrow-left"></div>
     </section>
-    <img :src="profileData.fullAvi" alt="" />
+    <img :src="clientWebsiteInfo.website_avi" alt="Full Body Avatar" />
   </div>
 </template>
 
 <script setup>
-const profileData = useProfileInfo();
+defineProps({
+  clientWebsiteInfo: {
+    type: Object,
+    require: true
+  }
+});
 </script>
 
 <style lang="scss" scoped>
