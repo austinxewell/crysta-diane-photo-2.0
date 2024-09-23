@@ -1,8 +1,8 @@
 <template>
   <div class="carousel-wrapper">
     <carousel :autoplay="4000" :pauseAutoplayOnHover="true" :transition="700" :wrap-around="true">
-      <slide v-for="slide in dummyData" :key="slide">
-        <img :src="slide.src" :alt="slide.photoName" />
+      <slide v-for="slide in clientHeroPhotos" :key="slide">
+        <img :src="slide.photo_url" :alt="slide.photo_name" />
       </slide>
       <template #addons>
         <pagination />
@@ -12,20 +12,20 @@
 </template>
 
 <script setup>
-const dummyData = ref([
-  {
-    photoName: 'First Photo',
-    src: 'https://images.unsplash.com/photo-1500964757637-c85e8a162699?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y29sb3IlMjBsYW5kc2NhcGV8ZW58MHx8MHx8fDA%3D'
-  },
-  {
-    photoName: 'Second Photo',
-    src: 'https://media.photographycourse.net/wp-content/uploads/2014/11/08164934/Landscape-Photography-steps.jpg'
-  },
-  {
-    photoName: 'Third Photo',
-    src: 'https://cdn.visualwilderness.com/wp-content/uploads/2019/12/Norway-Landscape-Photography-3-845x321.jpg'
+import { reactive, onMounted } from 'vue';
+import { useGalleryStore } from '~/stores/gallery';
+
+const galleryStore = useGalleryStore();
+const clientHeroPhotos = reactive([]);
+
+onMounted(async () => {
+  try {
+    await galleryStore.fetchHeroPhotos();
+    clientHeroPhotos.push(...galleryStore.heroPhotos);
+  } catch (err) {
+    console.error('Error Fetching Gallery:', err);
   }
-]);
+});
 </script>
 
 <style lang="scss" scoped>

@@ -5,14 +5,26 @@
         <section class="social-links-wrapper">
           <h3>Contact</h3>
           <ul>
-            <li>Email: <a href="mailto:crystadianephotography@gmail.com">crystadianephotography@gmail.com</a></li>
+            <li>
+              Email:
+              <a :href="clientWebsiteEmail">{{ clientWebsiteEmail }}</a>
+            </li>
             <li class="social-media-icon-wrapper">
-              <a href="https://www.facebook.com/crystadianephotography" target="_blank">
-                <img src="~/assets/images/facebook.png" alt="Facebook Icon" class="social-media-icon" />
+              <a
+                v-for="socialLink in clientSocialLinks"
+                :key="socialLink.id"
+                :href="socialLink.contact_information_url"
+                target="_blank"
+              >
+                <img
+                  :src="findIcon(socialLink.contact_information_name)"
+                  :alt="`${socialLink.contact_information_name} Icon`"
+                  class="social-media-icon"
+                />
               </a>
-              <a href="https://www.instagram.com/crystadianephoto/" target="_blank">
+              <!-- <a href="https://www.instagram.com/crystadianephoto/" target="_blank">
                 <img src="~/assets/images/instagram.png" alt="Instagram Icon" class="social-media-icon" />
-              </a>
+              </a> -->
             </li>
           </ul>
         </section>
@@ -22,7 +34,10 @@
         <section class="copy-right-wrapper">
           <ul>
             <li>&copy; crystadianephotography</li>
-            <li>Created By: <a href="https://github.com/austinxewell" target="_blank">Austin Ewell</a></li>
+            <li>
+              Created By:
+              <a href="https://github.com/austinxewell" target="_blank">Austin Ewell</a>
+            </li>
             <li><NuxtLink to="/login">Admin Login</NuxtLink></li>
           </ul>
         </section>
@@ -31,7 +46,46 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { ref, reactive, onMounted } from 'vue';
+import { useContactInfoStore } from '~/stores/contactInformation';
+
+const contactInfoStore = useContactInfoStore();
+const clientWebsiteEmail = ref('');
+const clientSocialLinks = reactive([]);
+
+onMounted(async () => {
+  try {
+    await contactInfoStore.fetchWebsiteEmail();
+    clientWebsiteEmail.value = contactInfoStore.websiteEmail?.website_email_address;
+  } catch (err) {
+    console.error('Error Fetching Website Email:', err);
+  }
+
+  try {
+    await contactInfoStore.fetchSocialLinks();
+    clientSocialLinks.push(...contactInfoStore.socialLinks);
+  } catch (err) {
+    console.error('Error Fetching Website Social Links:', err);
+  }
+});
+
+function findIcon(iconName) {
+  if (iconName.toLowerCase().includes('facebook')) {
+    return new URL('~/assets/images/facebook.png', import.meta.url).href;
+  } else if (iconName.toLowerCase().includes('instagram')) {
+    return new URL('~/assets/images/instagram.png', import.meta.url).href;
+  } else if (iconName.toLowerCase().includes('linkedin')) {
+    return new URL('~/assets/images/linkedin.png', import.meta.url).href;
+  } else if (iconName.toLowerCase().includes('snapchat')) {
+    return new URL('~/assets/images/snapchat.png', import.meta.url).href;
+  } else if (iconName.toLowerCase().includes('twitter') || iconName.toLowerCase() === 'x') {
+    return new URL('~/assets/images/twitter.png', import.meta.url).href;
+  } else if (iconName.toLowerCase().includes('youtube')) {
+    return new URL('~/assets/images/youtube.png', import.meta.url).href;
+  } else return new URL('~/assets/images/social-media.png', import.meta.url).href;
+}
+</script>
 
 <style lang="scss" scoped>
 .footer-wrapper {

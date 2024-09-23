@@ -11,11 +11,10 @@ export const useWebsiteStore = defineStore('website', {
   }),
 
   getters: {
-    getWebsiteInfo: (state) => state.websiteGreeting
+    getWebsiteInfo: (state) => state.websiteInfo
   },
 
   actions: {
-    // TODO - add website end points when they are created
     async fetchWebsiteInfo() {
       this.loading = true;
       this.error = null;
