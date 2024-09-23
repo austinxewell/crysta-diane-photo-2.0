@@ -10,6 +10,9 @@
       </button>
     </div>
 
+    <div class="intro-container">
+      <p>Hello, {{ currentUser.user_full_name }}</p>
+    </div>
     <h3>&bull; Admin Menu &bull;</h3>
     <div v-for="navLink in navMenu" :key="navLink.id" class="menu-item">
       <NuxtLink class="btn" :to="'/admin' + navLink.link">
@@ -53,12 +56,18 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue';
 import { useLoginStore } from '~/stores/login';
 
 const loginStore = useLoginStore();
 const navMenu = useNavigationItems();
 const isExpanded = useNavigationToggle();
 const adminParentToggle = useAdminParentToggle();
+const currentUser = ref('');
+
+onMounted(() => {
+  currentUser.value = loginStore.user;
+});
 
 function isParentExpanded(val) {
   if (adminParentToggle.value === val) {
