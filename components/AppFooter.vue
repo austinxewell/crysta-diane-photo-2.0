@@ -22,9 +22,6 @@
                   class="social-media-icon"
                 />
               </a>
-              <!-- <a href="https://www.instagram.com/crystadianephoto/" target="_blank">
-                <img src="~/assets/images/instagram.png" alt="Instagram Icon" class="social-media-icon" />
-              </a> -->
             </li>
           </ul>
         </section>
@@ -35,7 +32,7 @@
           <ul>
             <li>&copy; crystadianephotography</li>
             <li>
-              Created By:
+              Designed and Developed By:
               <a href="https://github.com/austinxewell" target="_blank">Austin Ewell</a>
             </li>
             <li><NuxtLink to="/login">Admin Login</NuxtLink></li>

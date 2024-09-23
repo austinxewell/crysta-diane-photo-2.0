@@ -8,11 +8,13 @@ export const useContactInfoStore = defineStore('contactInformation', {
     loading: false,
     error: null,
     websiteEmail: null,
+    websitePhoneNumber: null,
     socialLinks: []
   }),
 
   getters: {
     getWebsiteEmail: (state) => state.websiteEmail,
+    getWebsitePhoneNumber: (state) => state.websitePhoneNumber,
     getSocialLinks: (state) => state.socialLinks
   },
 
@@ -24,6 +26,21 @@ export const useContactInfoStore = defineStore('contactInformation', {
       try {
         const response = await axios.get(`${API_URL}/websiteEmail`);
         this.websiteEmail = response.data;
+      } catch (err) {
+        this.error = err.message;
+        console.error(err);
+      } finally {
+        this.loading = false;
+      }
+    },
+
+    async fetchWebsitePhoneNumber() {
+      this.loading = true;
+      this.error = null;
+
+      try {
+        const response = await axios.get(`${API_URL}/websitePhoneNumber`);
+        this.websitePhoneNumber = response.data;
       } catch (err) {
         this.error = err.message;
         console.error(err);
