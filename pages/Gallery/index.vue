@@ -2,9 +2,11 @@
   <div class="gallery-content" :class="{ '--fixed': viewPhoto }">
     <h3>Gallery</h3>
     <div class="pictures-container">
-      <div v-for="img in dummyData" :key="img.id" class="card">
-        <img class="__img" :src="img.src" :alt="img.title" @click="setPhoto(img)" />
-      </div>
+      <template v-for="img in clientGallery">
+        <div v-if="Boolean(img.show_in_gallery) === true" :key="img.photo_id" class="card">
+          <img class="__img" :src="img.photo_url" :alt="img.photo_name" @click="setPhoto(img)" />
+        </div>
+      </template>
     </div>
     <ModalSelectImg v-if="viewPhoto" :imgData="selectedPhoto" @close-modal="closeModal" />
   </div>
@@ -15,9 +17,22 @@ useHead({
   title: 'Gallery'
 });
 
-const dummyData = useGalleryInfo();
+import { ref, reactive, onMounted } from 'vue';
+import { useGalleryStore } from '~/stores/gallery';
+
+const galleryStore = useGalleryStore();
+const clientGallery = reactive([]);
 const viewPhoto = ref(false);
 const selectedPhoto = ref({});
+
+onMounted(async () => {
+  try {
+    await galleryStore.fetchGallery();
+    clientGallery.push(...galleryStore.gallery);
+  } catch (err) {
+    console.error('Error Fetching Gallery:', err);
+  }
+});
 
 function setPhoto(val) {
   selectedPhoto.value = val;

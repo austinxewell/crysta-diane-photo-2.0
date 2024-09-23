@@ -1,18 +1,18 @@
 <template>
   <div class="zoom-modal-content">
     <div class="header">
-      <h1 class="__title">{{ imgData.title }}</h1>
+      <h1 class="__title">{{ imgData.photo_name }}</h1>
       <div class="__btns">
         <button class="__btn">
-          <span v-if="isZoomed" class="material-icons-outlined" @click="toggleZoom()"> zoom_in_map </span>
-          <span v-else class="material-icons-outlined" @click="toggleZoom()"> zoom_out_map </span>
+          <span v-if="isZoomed" class="material-icons-outlined" @click="toggleZoom()">zoom_in_map</span>
+          <span v-else class="material-icons-outlined" @click="toggleZoom()">zoom_out_map</span>
         </button>
-        <button class="__btn" @click="closeModal()"><span class="material-icons-outlined"> close </span></button>
+        <button class="__btn" @click="closeModal()"><span class="material-icons-outlined">close</span></button>
       </div>
     </div>
     <div class="block">
       <div class="__wrapper">
-        <img id="__img" :src="imgData.src" :alt="imgData.title" />
+        <img id="__img" :src="imgData.photo_url" :alt="imgData.photo_name" />
         <CommonMainLogo class="__logo" :isWhite="true" />
       </div>
     </div>
