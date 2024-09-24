@@ -30,7 +30,6 @@ const isLoggedIn = computed(() => loginStore.isLoggedIn);
 
 // Call the initialize action when the layout is mounted
 onMounted(async () => {
-  console.log('initialize');
   await loginStore.initialize(); // Ensures the token is validated when the layout is loaded
 });
 </script>

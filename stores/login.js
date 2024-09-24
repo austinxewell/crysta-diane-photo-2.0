@@ -23,10 +23,12 @@ export const useLoginStore = defineStore('login', {
             // Adjust endpoint if needed
             headers: { Authorization: `Bearer ${token}` }
           });
+          console.log('setUser');
           this.user = response.data.user; // Set user if token is valid
         } catch (err) {
           console.error('Token validation failed:', err);
-          Cookies.remove('token'); // Remove invalid token
+          Cookies.remove('token');
+          this.user = {}; // Remove invalid token
         }
       }
     },

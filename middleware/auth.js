@@ -7,6 +7,7 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
     await loginStore.initialize();
 
     if (!loginStore.isLoggedIn) {
+      loginStore.$reset(); // Reset the entire store, including the `user` object
       return navigateTo('/login');
     }
   }

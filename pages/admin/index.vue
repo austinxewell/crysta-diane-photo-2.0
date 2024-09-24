@@ -2,11 +2,12 @@
   <div class="admin-home-page-content">
     <div class="page-header">
       <h3 class="page-header__text">Admin - Home Page</h3>
-      <button v-if="!isFormMatch" class="page-header__button">Save</button>
+      <button v-if="!isFormMatch" class="page-header__button" @click="submitForm">Save</button>
     </div>
 
     <section class="admin-content-container">
       <ul class="website-info-list">
+        <!-- Website Greeting -->
         <li class="website-info-list__item">
           <button v-if="!editGreeting" @click="editGreeting = true" class="" aria-label="Edit">
             <span class="material-icons-outlined" aria-hidden="true">edit</span>
@@ -22,6 +23,8 @@
             <input v-else class="text-container__input" type="text" v-model="greeting" />
           </div>
         </li>
+
+        <!-- Website About -->
         <li class="website-info-list__item">
           <button v-if="!editAbout" @click="editAbout = true" class="" aria-label="Edit">
             <span class="material-icons-outlined" aria-hidden="true">edit</span>
@@ -29,7 +32,6 @@
           <button v-else @click="closeAbout" class="" aria-label="Cancel">
             <span class="material-icons-outlined material-icons-outlined--cancel" aria-hidden="true">cancel</span>
           </button>
-
           <div class="text-container text-container--long">
             <h4 class="text-container__header text-container__header--long">Website About:</h4>
             <p v-if="!editAbout" @click="editAbout = true" class="text-container__text">
@@ -38,6 +40,8 @@
             <textarea v-else class="text-container__text-area" type="text" v-model="about" />
           </div>
         </li>
+
+        <!-- Website Review Header -->
         <li class="website-info-list__item">
           <button v-if="!editReviewHeader" @click="editReviewHeader = true" class="" aria-label="Edit">
             <span class="material-icons-outlined" aria-hidden="true">edit</span>
@@ -53,6 +57,8 @@
             <input v-else class="text-container__input" type="text" v-model="reviewHeader" />
           </div>
         </li>
+
+        <!-- Website Review Text -->
         <li class="website-info-list__item">
           <button v-if="!editReviewText" @click="editReviewText = true" class="" aria-label="Edit">
             <span class="material-icons-outlined" aria-hidden="true">edit</span>
@@ -60,7 +66,6 @@
           <button v-else @click="closeReviewText" class="" aria-label="Cancel">
             <span class="material-icons-outlined material-icons-outlined--cancel" aria-hidden="true">cancel</span>
           </button>
-
           <div class="text-container text-container--long">
             <h4 class="text-container__header text-container__header--long">Website Review Text:</h4>
             <p v-if="!editReviewText" @click="editReviewText = true" class="text-container__text">
@@ -69,6 +74,8 @@
             <textarea v-else class="text-container__text-area" type="text" v-model="reviewText" />
           </div>
         </li>
+
+        <!-- Website Comment -->
         <li class="website-info-list__item">
           <button v-if="!editComment" @click="editComment = true" class="" aria-label="Edit">
             <span class="material-icons-outlined" aria-hidden="true">edit</span>
@@ -84,6 +91,8 @@
             <input v-else class="text-container__input" type="text" v-model="comment" />
           </div>
         </li>
+
+        <!-- Website Avatar -->
         <li class="website-info-list__item">
           <button v-if="!editAvatar" @click="editAvatar = true" class="" aria-label="Edit">
             <span class="material-icons-outlined" aria-hidden="true">edit</span>
@@ -103,19 +112,15 @@
       </ul>
 
       <ModalSelectImg v-if="viewAvatar" :imgData="avatarData" @close-modal="closeAvatarPreview" />
-
-      <button v-if="!isFormMatch" class="large-button">Save Changes</button>
+      <button v-if="!isFormMatch" class="large-button" @click="submitForm">Save Changes</button>
     </section>
   </div>
 </template>
 
 <script setup>
-definePageMeta({
-  middleware: ['auth']
-});
-
 import { ref, reactive, onMounted, computed } from 'vue';
 import { useWebsiteStore } from '~/stores/website';
+import { compareFormFields } from '~/utils/formUtils'; // Import the utility function
 
 const websiteStore = useWebsiteStore();
 const clientWebsiteInfo = reactive({});
@@ -136,6 +141,44 @@ const reviewText = ref('');
 const comment = ref('');
 const avatar = ref('');
 
+// Computed object representing the form values
+const formBody = computed(() => ({
+  greeting: greeting.value,
+  about: about.value,
+  reviewHeader: reviewHeader.value,
+  reviewText: reviewText.value,
+  comment: comment.value,
+  avatar: avatar.value
+}));
+
+// Computed to compare form fields using utility function
+const isFormMatch = computed(() => {
+  const storedFields = {
+    greeting: websiteStore.websiteInfo.website_greeting,
+    about: websiteStore.websiteInfo.website_about,
+    reviewHeader: websiteStore.websiteInfo.website_review_header,
+    reviewText: websiteStore.websiteInfo.website_review_text,
+    comment: websiteStore.websiteInfo.website_comment,
+    avatar: websiteStore.websiteInfo.website_avi
+  };
+
+  return compareFormFields(formBody.value, storedFields);
+});
+
+// On mounted lifecycle hook to fetch website info
+onMounted(async () => {
+  await websiteStore.fetchWebsiteInfo();
+  Object.assign(clientWebsiteInfo, websiteStore.websiteInfo);
+
+  greeting.value = websiteStore.websiteInfo.website_greeting;
+  about.value = websiteStore.websiteInfo.website_about;
+  reviewHeader.value = websiteStore.websiteInfo.website_review_header;
+  reviewText.value = websiteStore.websiteInfo.website_review_text;
+  comment.value = websiteStore.websiteInfo.website_comment;
+  avatar.value = websiteStore.websiteInfo.website_avi;
+});
+
+// Methods to close the edit modes and reset values
 function closeGreeting() {
   editGreeting.value = false;
   greeting.value = websiteStore.websiteInfo.website_greeting;
@@ -167,10 +210,11 @@ function closeAvatar() {
 }
 
 function setAvatar() {
-  var obj = {};
-  obj.photo_id = 1;
-  obj.photo_url = avatar;
-  obj.photo_name = 'Potential Avatar';
+  const obj = {
+    photo_id: 1,
+    photo_url: avatar.value,
+    photo_name: 'Potential Avatar'
+  };
   Object.assign(avatarData, obj);
   viewAvatar.value = true;
 }
@@ -179,40 +223,10 @@ function closeAvatarPreview() {
   viewAvatar.value = false;
 }
 
-const isFormMatch = computed(() => {
-  if (greeting.value !== websiteStore.websiteInfo.website_greeting) {
-    return false;
-  }
-  if (about.value !== websiteStore.websiteInfo.website_about) {
-    return false;
-  }
-  if (reviewHeader.value !== websiteStore.websiteInfo.website_review_header) {
-    return false;
-  }
-  if (reviewText.value !== websiteStore.websiteInfo.website_review_text) {
-    return false;
-  }
-  if (comment.value !== websiteStore.websiteInfo.website_comment) {
-    return false;
-  }
-  if (avatar.value !== websiteStore.websiteInfo.website_avi) {
-    return false;
-  }
-
-  return true;
-});
-
-onMounted(async () => {
-  await websiteStore.fetchWebsiteInfo();
-  Object.assign(clientWebsiteInfo, websiteStore.websiteInfo);
-
-  greeting.value = websiteStore.websiteInfo.website_greeting;
-  about.value = websiteStore.websiteInfo.website_about;
-  reviewHeader.value = websiteStore.websiteInfo.website_review_header;
-  reviewText.value = websiteStore.websiteInfo.website_review_text;
-  comment.value = websiteStore.websiteInfo.website_comment;
-  avatar.value = websiteStore.websiteInfo.website_avi;
-});
+// Form submission
+function submitForm() {
+  websiteStore.postWebsiteInfo(formBody.value);
+}
 </script>
 
 <style lang="scss" scoped>
