@@ -10,7 +10,7 @@
 ![Vue Router](https://img.shields.io/badge/Vue%20Router-4FC08D?style=for-the-badge&logo=vue-router&logoColor=white)
 
 ![Crysta Diane Photography 2.0 Landing Page](https://i.postimg.cc/x18tRz5d/cdp-landing.png)
-  
+
 **Crysta Diane Photography 2.0** is a full-stack photography portfolio platform. The frontend leverages Nuxt 3, Vue 3, and TypeScript, creating a modern, responsive experience for visitors to explore photo galleries, services, reviews, and more. This version includes an admin dashboard for easy content management.
 
 ---
