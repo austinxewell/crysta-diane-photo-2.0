@@ -106,7 +106,7 @@ Visit `http://localhost:3000` to view the app in your browser.
 ## 👨‍💻 Author
 
 **Austin Ewell**  
-Front End Developer | Creator of **Bag of Tricks**  
+Front End Developer | Creator of **Crysta Diane Photography 2.0**  
 🔗 [GitHub](https://github.com/austinxewell)
 
 ---
