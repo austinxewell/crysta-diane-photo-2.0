@@ -1,13 +1,14 @@
 # Crysta Diane Photography 2.0 - Frontend
 
-![Nuxt 3](https://img.shields.io/badge/Nuxt%203-00C58E?style=for-the-badge&logo=nuxtdotjs&logoColor=white)
-![Vue 3](https://img.shields.io/badge/Vue%203-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
-![Pinia](https://img.shields.io/badge/Pinia-00B5D9?style=for-the-badge&logo=pinia&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
-![Vue Router](https://img.shields.io/badge/Vue%20Router-4FC08D?style=for-the-badge&logo=vue-router&logoColor=white)
+![Nuxt 3](https://img.shields.io/badge/Nuxt%203-00C58E?style=flat&logo=nuxtdotjs&logoColor=white)
+![Vue 3](https://img.shields.io/badge/Vue%203-4FC08D?style=flat&logo=vue.js&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white)
+![Pinia](https://img.shields.io/badge/Pinia-00B5D9?style=flat&logo=pinia&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat&logo=vite&logoColor=white)
+![Vue Router](https://img.shields.io/badge/Vue%20Router-4FC08D?style=flat&logo=vue-router&logoColor=white)
+
 
 ![Crysta Diane Photography 2.0 Landing Page](https://i.postimg.cc/x18tRz5d/cdp-landing.png)
 
