@@ -1,75 +1,84 @@
-# Nuxt 3 Minimal Starter
+# Crysta Diane Photography 2.0 - Frontend
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+**Project Overview**  
+Crysta Diane Photography 2.0 is a full-stack photography portfolio platform. The frontend leverages **Nuxt 3**, **Vue 3**, and **TypeScript**, creating a modern, responsive experience for visitors to explore photo galleries, services, reviews, and more. This version includes an **admin dashboard** for easy content management.
+
+**Live Demo**  
+- [Crysta Diane Photography 2.0 - Frontend (Live)](https://crysta-diane-photo-2-0.netlify.app/)  
+
+---
+
+## Features
+
+- **Dynamic image gallery** with zoom functionality
+- **Contact form** with client-side validation and admin notifications
+- **Admin dashboard** for managing site content (galleries, reviews, services)
+- **Token-based authentication** for secure admin login (JWT)
+- **CRUD operations** for site content via REST API integration
+- **Modern UI** with reusable components (carousels, modals)
+
+---
+
+## Technologies Used
+
+- **Frontend:**
+  - **Nuxt 3** (Vue 3 framework)
+  - **Vue Router** (for routing)
+  - **Pinia** (state management)
+  - **TypeScript**
+  - **Tailwind CSS** (for styling)
+  - **Axios** (for API communication)
+  - **js-cookie** (session management)
+  - **jwt-decode** (JWT token decoding)
+  - **Vite** (development server)
+  - **Prettier** and **ESLint** (for code quality)
+
+- **Key Libraries and Tools:**
+  - **Vue3 Carousel** (image carousel)
+  - **FontAwesome** (icons)
+  
+---
 
 ## Setup
 
-Make sure to install the dependencies:
+### Prerequisites
+- [Node.js](https://nodejs.org/) (v16+ recommended)
+- [Yarn](https://yarnpkg.com/) (optional but recommended)
 
-```bash
-# npm
-npm install
+### Installation
 
-# pnpm
-pnpm install
+1. Clone the repository:
 
-# yarn
-yarn install
+  ```bash
+  git clone https://github.com/austinxewell/crysta-diane-photo-2.0.git
+  ```
 
-# bun
-bun install
-```
+2. Install dependencies:
+  ```bash
+  npm install
+  ```
 
-## Development Server
+3. Run the development server:
+  ```bash
+  npm dev
+  ```
 
-Start the development server on `http://localhost:3000`:
+Visit `http://localhost:3000` to view the app in your browser.
 
-```bash
-# npm
-npm run dev
+---
 
-# pnpm
-pnpm run dev
+## Environment Variables
 
-# yarn
-yarn dev
+No environment variables are required for the frontend.
 
-# bun
-bun run dev
-```
+---
 
-## Production
+## Contributing
 
-Build the application for production:
+If you would like to contribute to the project, feel free to fork the repository, submit issues, and make pull requests.
 
-```bash
-# npm
-npm run build
+---
 
-# pnpm
-pnpm run build
+## Backend Repository
 
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+For information about the backend, please visit the [Backend GitHub Repository](https://github.com/austinxewell/CDPhoto-Backend/tree/dev).
