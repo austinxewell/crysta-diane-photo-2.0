@@ -1,6 +1,6 @@
 # Crysta Diane Photography 2.0 - Frontend
 
-![Nuxt 3](https://img.shields.io/badge/Nuxt%203-3DCECE-green?style=flat-square&logo=nuxtdotjs&logoColor=white)
+![Nuxt 3](https://img.shields.io/badge/Nuxt%203-3.x-green?style=flat-square&logo=nuxtdotjs&logoColor=white)
 ![Vue 3](https://img.shields.io/badge/Vue%203-3.x-green?style=flat-square&logo=vue.js&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-4.x-blue?style=flat-square&logo=typescript&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-2.x-blue?style=flat-square&logo=tailwind-css&logoColor=white)
